@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.Setting.PwChangeActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="375"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:paddingLeft="16dp"
+            android:src="@drawable/ic_back"/>
+
+        <com.playbench.winting.views.BoldTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="295"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:text="@string/Pw_Change_Title"
+            android:textColor="@color/colorTextColor"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <com.playbench.winting.views.MediumTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextColor"
+            android:textSize="12dp"
+            android:text="@string/Pw_Change_Current_Pw_Text"/>
+
+        <EditText
+            android:id="@+id/edt_pw_change_current"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextColor"
+            android:textColorHint="@color/colorPlaceHolder"
+            android:textSize="20dp"
+            android:hint="@string/Pw_Change_Current_Pw_Place_Holder_Text"/>
+
+        <com.playbench.winting.views.RegularTextView
+            android:id="@+id/txt_pw_change_current_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:textColor="@color/colorOrangeRed"
+            android:text="@string/Pw_Change_Current_Pw_Hint_Text"/>
+
+        <com.playbench.winting.views.MediumTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextColor"
+            android:textSize="12dp"
+            android:layout_marginTop="22dp"
+            android:text="@string/Pw_Change_New_Pw_Text"/>
+
+        <EditText
+            android:id="@+id/edt_pw_change_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextColor"
+            android:textColorHint="@color/colorPlaceHolder"
+            android:textSize="20dp"
+            android:hint="@string/Pw_Change_New_Pw_Place_Holder_Text"/>
+
+        <com.playbench.winting.views.RegularTextView
+            android:id="@+id/txt_pw_change_new_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:textColor="@color/colorOrangeRed"
+            android:text="@string/Pw_Change_New_Pw_Hint_Error_Text"/>
+
+        <com.playbench.winting.views.MediumTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextColor"
+            android:textSize="12dp"
+            android:layout_marginTop="22dp"
+            android:text="@string/Pw_Change_New_Confirm_Pw_Text"/>
+
+        <EditText
+            android:id="@+id/edt_pw_change_new_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextColor"
+            android:textColorHint="@color/colorPlaceHolder"
+            android:textSize="20dp"
+            android:hint="@string/Pw_Change_New_Confirm_Pw_Place_Holder_Text"/>
+
+        <com.playbench.winting.views.RegularTextView
+            android:id="@+id/txt_pw_change_new_confirm_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:textColor="@color/colorOrangeRed"
+            android:text="@string/Pw_Change_New_Confirm_Pw_Hint_Error_Text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_pw_change_finish"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/shape_radius_8dp"
+        android:backgroundTint="@color/colorDisable"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/Pw_Change_Button_Text"
+        android:textSize="20dp"
+        android:textColor="@color/colorPlaceHolder"
+        android:fontFamily="@font/notosanscjkkr_bold"
+        android:includeFontPadding="false"/>
+</LinearLayout>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activitys.Estimate.FilmInsertActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="375">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:paddingLeft="16dp"
+            android:src="@drawable/ic_back"/>
+
+        <com.playbench.winting.views.BoldTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="295"
+            android:text="@string/Film_Insert_Title"
+            android:gravity="center"
+            android:textColor="@color/colorTextColor"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="9dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/film_select_off">
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rdo_film_insert_select_film"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/film_select_radio_button"
+                        android:button="@null"
+                        android:checked="true"
+                        android:text="@string/Film_Insert_Select_Film"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/notosanscjkkr_medium"
+                        android:includeFontPadding="false"
+                        android:textSize="16dp"/>
+
+                    <RadioButton
+                        android:id="@+id/rdo_film_insert_select_sheet"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/film_select_radio_button"
+                        android:button="@null"
+                        android:checked="false"
+                        android:text="@string/Film_Insert_Select_Sheet"
+                        android:gravity="center"
+                        android:textColor="@color/colorTextColor"
+                        android:fontFamily="@font/notosanscjkkr_medium"
+                        android:includeFontPadding="false"
+                        android:textSize="16dp"/>
+                </RadioGroup>
+            </LinearLayout>
+
+            <com.playbench.winting.views.MediumTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Film_Insert_Info_Title"
+                android:layout_marginTop="21dp"
+                android:textSize="20dp"
+                android:textColor="@color/colorTextColor"/>
+
+            <com.playbench.winting.views.MediumTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Film_Insert_Brand_Text"
+                android:layout_marginTop="6dp"
+                android:textSize="12dp"
+                android:textColor="@color/colorTextColor"/>
+
+            <EditText
+                android:id="@+id/edt_film_insert_brand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Film_Insert_Brand_Place_Holder_Text"
+                android:layout_marginTop="6dp"
+                android:textSize="20dp"
+                android:textColor="@color/colorTextColor"
+                android:textColorHint="@color/colorPlaceHolder"/>
+
+            <com.playbench.winting.views.MediumTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Film_Insert_Name_Text"
+                android:layout_marginTop="24dp"
+                android:textSize="12dp"
+                android:textColor="@color/colorTextColor"/>
+
+            <EditText
+                android:id="@+id/edt_film_insert_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Film_Insert_Name_Place_Holder_Text"
+                android:layout_marginTop="6dp"
+                android:textSize="20dp"
+                android:textColor="@color/colorTextColor"
+                android:textColorHint="@color/colorPlaceHolder"/>
+
+            <LinearLayout
+                android:id="@+id/lin_film_insert_spec_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Film_Insert_Spec"
+                    android:layout_marginTop="40.5dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorTextColor"/>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Film_Insert_VLT"
+                    android:layout_marginTop="6dp"
+                    android:textSize="12dp"
+                    android:textColor="@color/colorTextColor"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp">
+
+                    <EditText
+                        android:id="@+id/edt_film_insert_vlt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/Film_Insert_Spec_Place_Holder"
+                        android:layout_marginTop="6dp"
+                        android:inputType="number"
+                        android:textSize="20dp"
+                        android:textColor="@color/colorTextColor"
+                        android:textColorHint="@color/colorPlaceHolder"/>
+
+                    <com.playbench.winting.views.MediumTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/Film_Insert_Percent"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center"/>
+                </RelativeLayout>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Film_Insert_UVR"
+                    android:layout_marginTop="16dp"
+                    android:textSize="12dp"
+                    android:textColor="@color/colorTextColor"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp">
+
+                    <EditText
+                        android:id="@+id/edt_film_insert_uvr"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/Film_Insert_Spec_Place_Holder"
+                        android:layout_marginTop="6dp"
+                        android:inputType="number"
+                        android:textSize="20dp"
+                        android:textColor="@color/colorTextColor"
+                        android:textColorHint="@color/colorPlaceHolder"/>
+
+                    <com.playbench.winting.views.MediumTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/Film_Insert_Percent"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center"/>
+                </RelativeLayout>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Film_Insert_IRR"
+                    android:layout_marginTop="16dp"
+                    android:textSize="12dp"
+                    android:textColor="@color/colorTextColor"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp">
+
+                    <EditText
+                        android:id="@+id/edt_film_insert_irr"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/Film_Insert_Spec_Place_Holder"
+                        android:layout_marginTop="6dp"
+                        android:inputType="number"
+                        android:textSize="20dp"
+                        android:textColor="@color/colorTextColor"
+                        android:textColorHint="@color/colorPlaceHolder"/>
+
+                    <com.playbench.winting.views.MediumTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/Film_Insert_Percent"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center"/>
+                </RelativeLayout>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Film_Insert_TSER"
+                    android:layout_marginTop="16dp"
+                    android:textSize="12dp"
+                    android:textColor="@color/colorTextColor"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp">
+
+                    <EditText
+                        android:id="@+id/edt_film_insert_tser"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/Film_Insert_Spec_Place_Holder"
+                        android:layout_marginTop="6dp"
+                        android:inputType="number"
+                        android:textSize="20dp"
+                        android:textColor="@color/colorTextColor"
+                        android:textColorHint="@color/colorPlaceHolder"/>
+
+                    <com.playbench.winting.views.MediumTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/Film_Insert_Percent"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center"/>
+                </RelativeLayout>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Film_Insert_Guarantee"
+                    android:layout_marginTop="16dp"
+                    android:textSize="12dp"
+                    android:textColor="@color/colorTextColor"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="51dp">
+
+                    <EditText
+                        android:id="@+id/edt_film_insert_guarantee"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/Film_Insert_Guarantee_Place_Holder"
+                        android:layout_marginTop="6dp"
+                        android:inputType="number"
+                        android:textSize="20dp"
+                        android:textColor="@color/colorTextColor"
+                        android:textColorHint="@color/colorPlaceHolder"/>
+
+                    <com.playbench.winting.views.MediumTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/Film_Insert_Year_Text"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_film_insert_save"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/shape_radius_8dp"
+        android:text="@string/Film_Insert_Button_Text"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:fontFamily="@font/notosanscjkkr_bold"
+        android:includeFontPadding="false"
+        android:layout_marginBottom="20dp" />
+</LinearLayout>

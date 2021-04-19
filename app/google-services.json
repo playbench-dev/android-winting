@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "16187508166",
+    "project_id": "winting-89938",
+    "storage_bucket": "winting-89938.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:16187508166:android:6281f341d27efb4c475ec7",
+        "android_client_info": {
+          "package_name": "com.playbench.winting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "16187508166-gfrafq6svqaa8eid5vgv1t8c32f8blme.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.playbench.winting",
+            "certificate_hash": "ec14e2ba5fa0376b5aa2748f93ac53dd15fd07bb"
+          }
+        },
+        {
+          "client_id": "16187508166-14rbsljj7lt10q5mekpk6rfur016lj2k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBguipuOYXVKoeQu_7s74W_X16PweCWdUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "16187508166-14rbsljj7lt10q5mekpk6rfur016lj2k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

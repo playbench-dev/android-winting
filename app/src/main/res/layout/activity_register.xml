@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activitys.Login.RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="375">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:paddingLeft="16dp"
+            android:src="@drawable/ic_back"/>
+
+        <com.playbench.winting.views.BoldTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="295"
+            android:textColor="@color/colorTextColor"
+            android:text="@string/Register_Title"
+            android:gravity="center"
+            android:textSize="20dp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="19dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="@string/Register_Id_Title"
+                    android:textColor="@color/colorTextColor"/>
+
+                <EditText
+                    android:id="@+id/edt_register_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint="@string/Register_Id_PlaceHolder"
+                    android:textSize="20dp"
+                    android:inputType="text"
+                    android:textColorHint="@color/colorPlaceHolder"
+                    android:textColor="@color/colorTextColor"/>
+
+                <com.playbench.winting.views.RegularTextView
+                    android:id="@+id/txt_register_id_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10dp"
+                    android:text="@string/Register_Id_Check_False"
+                    android:textColor="@color/colorTextColor"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp">
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="@string/Register_Pw_Title"
+                    android:textColor="@color/colorTextColor"/>
+
+                <EditText
+                    android:id="@+id/edt_register_pw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint="@string/Register_Pw_PlaceHolder"
+                    android:textSize="20dp"
+                    android:inputType="textPassword"
+                    android:textColorHint="@color/colorPlaceHolder"
+                    android:textColor="@color/colorTextColor"/>
+
+                <com.playbench.winting.views.RegularTextView
+                    android:id="@+id/txt_register_pw_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10dp"
+                    android:text="@string/Register_Pw_Check_False"
+                    android:textColor="@color/colorTextColor"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="18dp">
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="@string/Register_Pw_Confirm_Title"
+                    android:textColor="@color/colorTextColor"/>
+
+                <EditText
+                    android:id="@+id/edt_register_pw_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:inputType="textPassword"
+                    android:hint="@string/Register_Pw_Confirm_PlaceHolder"
+                    android:textSize="20dp"
+                    android:textColorHint="@color/colorPlaceHolder"
+                    android:textColor="@color/colorTextColor"/>
+
+                <com.playbench.winting.views.RegularTextView
+                    android:id="@+id/txt_register_pw_confirm_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10dp"
+                    android:text="@string/Register_Pw_Confirm_Check_False"
+                    android:textColor="@color/colorTextColor"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="18dp">
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="@string/Register_Company_Title"
+                    android:textColor="@color/colorTextColor"/>
+
+                <EditText
+                    android:id="@+id/edt_register_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint="@string/Register_Company_PlaceHolder"
+                    android:textSize="20dp"
+                    android:focusable="false"
+                    android:textColorHint="@color/colorPlaceHolder"
+                    android:textColor="@color/colorTextColor"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="18dp">
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="@string/Register_Name_Title"
+                    android:textColor="@color/colorTextColor"/>
+
+                <EditText
+                    android:id="@+id/edt_register_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint="@string/Register_Name_PlaceHolder"
+                    android:textSize="20dp"
+                    android:inputType="text"
+                    android:textColorHint="@color/colorPlaceHolder"
+                    android:textColor="@color/colorTextColor"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="18dp">
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="@string/Register_Contact_Title"
+                    android:textColor="@color/colorTextColor"/>
+
+                <EditText
+                    android:id="@+id/edt_register_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint="@string/Register_Contact_PlaceHolder"
+                    android:textSize="20dp"
+                    android:inputType="phone"
+                    android:textColorHint="@color/colorPlaceHolder"
+                    android:textColor="@color/colorTextColor"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="18dp">
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:text="@string/Register_Region_Title"
+                    android:textColor="@color/colorTextColor"/>
+
+                <EditText
+                    android:id="@+id/edt_register_region"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint="@string/Register_Region_PlaceHolder"
+                    android:focusable="false"
+                    android:textSize="20dp"
+                    android:textColorHint="@color/colorPlaceHolder"
+                    android:textColor="@color/colorTextColor"/>
+
+                <com.playbench.winting.views.RegularTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="10dp"
+                    android:text="@string/Register_Region_Info_Text"
+                    android:textColor="@color/colorPrimary"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_register_done"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/shape_radius_8dp"
+        android:backgroundTint="@color/colorDisable"
+        android:textColor="@color/colorDisableText"
+        android:text="@string/Register_Title"
+        android:fontFamily="@font/notosanscjkkr_bold"
+        android:textSize="20dp"
+        android:includeFontPadding="false"/>
+
+</LinearLayout>

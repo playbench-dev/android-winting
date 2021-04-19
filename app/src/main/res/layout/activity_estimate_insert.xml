@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activitys.Estimate.EstimateInsertActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="375">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:paddingLeft="16dp"
+            android:src="@drawable/ic_back"/>
+
+        <com.playbench.winting.views.BoldTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="295"
+            android:text="@string/Estimate_Insert_Title"
+            android:gravity="center"
+            android:textColor="@color/colorTextColor"
+            android:textSize="20dp"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <com.playbench.winting.views.BoldTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextColor"
+                android:textSize="20dp"
+                android:text="@string/Estimate_Insert_Title"
+                android:layout_marginTop="4dp"/>
+
+            <com.playbench.winting.views.MediumTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="@color/colorTextColor"
+                android:layout_marginTop="6dp"
+                android:text="@string/Estimate_Insert_Info_Address"/>
+
+            <com.playbench.winting.views.RegularTextView
+                android:id="@+id/txt_estimate_insert_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/colorTextColor"
+                android:layout_marginTop="6dp"/>
+
+            <com.playbench.winting.views.MediumTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="@color/colorTextColor"
+                android:layout_marginTop="12dp"
+                android:text="@string/Estimate_Insert_Info_Due_Date"/>
+
+            <com.playbench.winting.views.RegularTextView
+                android:id="@+id/txt_estimate_insert_due_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/colorTextColor"
+                android:layout_marginTop="6dp"/>
+
+            <com.playbench.winting.views.MediumTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="@color/colorTextColor"
+                android:layout_marginTop="12dp"
+                android:text="@string/Estimate_Insert_Info_Form"/>
+
+            <com.playbench.winting.views.RegularTextView
+                android:id="@+id/txt_estimate_insert_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/colorTextColor"
+                android:layout_marginTop="6dp"/>
+
+            <com.playbench.winting.views.BoldTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextColor"
+                android:textSize="20dp"
+                android:text="@string/Estimate_Insert_Info_Title"
+                android:layout_marginTop="28dp"/>
+
+            <LinearLayout
+                android:id="@+id/lin_estimate_insert_film_list_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="12dp"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="19dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/colorPlaceHolder"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp">
+
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/Estimate_Insert_Total_Text"
+                    android:textColor="@color/colorTextColor"
+                    android:textSize="16dp"
+                    android:gravity="bottom"
+                    android:paddingBottom="5dp"/>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:id="@+id/txt_estimate_insert_total_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTextColor"
+                    android:textSize="32dp"
+                    android:layout_marginLeft="7dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_estimate_insert_finish"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/shape_radius_8dp"
+        android:text="@string/Estimate_Insert_Film_Info_Finish_Button"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:fontFamily="@font/notosanscjkkr_bold"
+        android:includeFontPadding="false"
+        android:layout_marginBottom="20dp" />
+
+</LinearLayout>

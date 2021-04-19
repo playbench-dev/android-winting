@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activitys.Login.CompanySearchActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:paddingTop="39dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="15dp"
+        android:gravity="center_vertical"
+        android:background="@color/colorRGB249">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_radius_10dp"
+            android:backgroundTint="@color/colorRGB118">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_search"
+                android:layout_marginLeft="4dp"/>
+
+            <EditText
+                android:id="@+id/edt_company_search_text"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="2dp"
+                android:background="@null"
+                android:hint="@string/Company_Search_PlaceHolder"
+                android:fontFamily="@font/notosanscjkkr_medium_regular"
+                android:includeFontPadding="false"
+                android:textSize="17dp"
+                android:textColorHint="@color/colorPlaceHolder"
+                android:textColor="@color/colorTextColor"/>
+
+            <ImageView
+                android:id="@+id/img_company_search_clear"
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_close"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="6dp"/>
+        </LinearLayout>
+
+        <com.playbench.winting.views.RegularTextView
+            android:id="@+id/txt_company_search_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="@string/Company_Search_Close_Text"
+            android:textSize="17dp"
+            android:textColor="@color/colorTextColor"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_view_company_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

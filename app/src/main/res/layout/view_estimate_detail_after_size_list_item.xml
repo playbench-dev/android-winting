@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorTextColor"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp">
+        <com.playbench.winting.views.RegularTextView
+            android:id="@+id/txt_estimate_detail_after_size_list_item_vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="10dp"
+            android:gravity="center"
+            android:text="@string/Estimate_Detail_Vertical_Text"
+            android:textColor="@color/colorTextColor"/>
+
+        <com.playbench.winting.views.RegularTextView
+            android:id="@+id/txt_estimate_detail_after_size_list_item_horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="10dp"
+            android:gravity="center"
+            android:text="@string/Estimate_Detail_Horizontal_Text"
+            android:textColor="@color/colorTextColor"/>
+
+        <com.playbench.winting.views.RegularTextView
+            android:id="@+id/txt_estimate_detail_after_size_list_item_paper_cnt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="10dp"
+            android:gravity="center"
+            android:text="@string/Estimate_Detail_Paper_Cnt_Text"
+            android:textColor="@color/colorTextColor"/>
+
+        <com.playbench.winting.views.RegularTextView
+            android:id="@+id/txt_estimate_detail_after_size_list_item_square_meter"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="10dp"
+            android:gravity="center"
+            android:text="@string/Estimate_Detail_Square_Meter_Text"
+            android:textColor="@color/colorTextColor"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorDisable"
+    tools:context=".Activitys.Setting.AlarmSettingActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="375"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:paddingLeft="16dp"
+            android:src="@drawable/ic_back"/>
+
+        <com.playbench.winting.views.BoldTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="295"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:text="@string/Alarm_Setting_Title"
+            android:textColor="@color/colorTextColor"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white">
+
+        <com.playbench.winting.views.MediumTextView
+            android:id="@+id/txt_alarm_setting_new"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:text="@string/Alarm_Setting_New_Alarm_Text"
+            android:textColor="@color/colorTextColor"
+            android:textSize="16dp"/>
+
+        <Switch
+            android:id="@+id/swh_alarm_setting_new"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:checked="true"
+            android:gravity="center"
+            android:thumb="@drawable/switch_track_thumb_selector"
+            android:track="@drawable/switch_track_selector"
+            android:layout_marginRight="16dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white">
+
+        <com.playbench.winting.views.MediumTextView
+            android:id="@+id/txt_alarm_setting_progress"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:text="@string/Alarm_Setting_Progress_Text"
+            android:textColor="@color/colorTextColor"
+            android:textSize="16dp"/>
+
+        <Switch
+            android:id="@+id/swh_alarm_setting_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:checked="true"
+            android:gravity="center"
+            android:thumb="@drawable/switch_track_thumb_selector"
+            android:track="@drawable/switch_track_selector"
+            android:layout_marginRight="16dp"/>
+    </LinearLayout>
+
+</LinearLayout>

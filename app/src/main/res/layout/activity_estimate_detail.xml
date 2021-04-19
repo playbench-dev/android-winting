@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.Estimate.EstimateDetailActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="256dp">
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/view_pager_estimate_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:id="@+id/txt_estimate_detail_pager_cnt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:background="@drawable/shape_radius_ring"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"
+                    android:text="1/10"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginRight="12dp"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="14dp"
+                android:paddingBottom="100dp">
+
+                <com.playbench.winting.views.BoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorTextColor"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/Estimate_Detail_Region_Text"/>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:id="@+id/txt_estimate_detail_region"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/colorTextColor"/>
+
+                <com.playbench.winting.views.BoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorTextColor"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/Estimate_Detail_Type_Text"/>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:id="@+id/txt_estimate_detail_form"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/colorTextColor"/>
+
+                <com.playbench.winting.views.BoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorTextColor"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/Estimate_Detail_Due_Date_Text"/>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:id="@+id/txt_estimate_detail_due_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/colorTextColor"/>
+
+                <com.playbench.winting.views.BoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorTextColor"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/Estimate_Detail_Purpose_Text"/>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:id="@+id/txt_estimate_detail_purpose"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/colorTextColor"/>
+
+                <com.playbench.winting.views.BoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorTextColor"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/Estimate_Detail_Description_Text"/>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:id="@+id/txt_estimate_detail_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/colorTextColor"/>
+
+                <com.playbench.winting.views.BoldTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorTextColor"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/Estimate_Detail_After_Size_Text"/>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:id="@+id/txt_estimate_detail_insulation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:text="@string/Estimate_Detail_Insulation_Text"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="13dp"
+                    android:textColor="@color/colorTextColor"/>
+
+                <LinearLayout
+                    android:id="@+id/lin_estimate_detail_insulation_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/stroke_no_radius"
+                    android:backgroundTint="@color/colorTextColor">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/Estimate_Detail_Vertical_Text"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
+
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/Estimate_Detail_Horizontal_Text"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
+
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/Estimate_Detail_Paper_Cnt_Text"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
+
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/Estimate_Detail_Square_Meter_Text"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.playbench.winting.views.MediumTextView
+                    android:id="@+id/txt_estimate_detail_sheet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:text="@string/Estimate_Detail_Sheet_Paper_Text"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="13dp"
+                    android:textColor="@color/colorTextColor"/>
+
+                <LinearLayout
+                    android:id="@+id/lin_estimate_detail_sheet_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/stroke_no_radius"
+                    android:backgroundTint="@color/colorTextColor">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/Estimate_Detail_Vertical_Text"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
+
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:text="@string/Estimate_Detail_Horizontal_Text"
+                            android:gravity="center"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
+
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:text="@string/Estimate_Detail_Paper_Cnt_Text"
+                            android:gravity="center"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
+
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:text="@string/Estimate_Detail_Square_Meter_Text"
+                            android:gravity="center"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="375">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:paddingLeft="16dp"
+            android:src="@drawable/ic_back"/>
+
+        <com.playbench.winting.views.BoldTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="295"
+            android:textSize="20dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_estimate_detail_next_move"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/shape_radius_8dp"
+        android:text="@string/Estimate_Detail_Button_Text"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:fontFamily="@font/notosanscjkkr_bold"
+        android:includeFontPadding="false"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"/>
+</RelativeLayout>

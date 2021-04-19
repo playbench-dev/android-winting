@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activitys.MyList.MyListDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="375">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:paddingLeft="16dp"
+            android:src="@drawable/ic_back"/>
+
+        <com.playbench.winting.views.BoldTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="295"
+            android:text="@string/My_List_Detail_Title"
+            android:gravity="center"
+            android:textColor="@color/colorTextColor"
+            android:textSize="20dp"/>
+
+        <com.playbench.winting.views.MediumTextView
+            android:id="@+id/txt_my_list_detail_save"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:text="@string/My_List_Detail_Save_Text"
+            android:textSize="16dp"
+            android:textColor="@color/colorTextColor"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp">
+
+            <com.playbench.winting.views.MediumTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextColor"
+                android:textSize="12dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/My_List_Detail_Start_Date_Text" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <com.playbench.winting.views.RegularTextView
+                    android:id="@+id/txt_my_list_detail_start_dt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/My_List_Detail_Start_Date_Place_Holder_Text"
+                    android:textColorHint="@color/colorPlaceHolder"
+                    android:textColor="@color/colorTextColor"
+                    android:layout_centerVertical="true"
+                    android:textSize="20dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPlaceHolder"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="2dp"/>
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_arrow_down"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="11dp"/>
+            </RelativeLayout>
+
+            <com.playbench.winting.views.MediumTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextColor"
+                android:textSize="12dp"
+                android:layout_marginTop="21dp"
+                android:text="@string/My_List_Detail_End_Date_Text" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <com.playbench.winting.views.RegularTextView
+                    android:id="@+id/txt_my_list_detail_end_dt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/My_List_Detail_End_Date_Place_Holder_Text"
+                    android:textColorHint="@color/colorPlaceHolder"
+                    android:textColor="@color/colorTextColor"
+                    android:layout_centerVertical="true"
+                    android:textSize="20dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPlaceHolder"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="2dp"/>
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_arrow_down"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="11dp"/>
+            </RelativeLayout>
+
+            <com.playbench.winting.views.MediumTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextColor"
+                android:textSize="12dp"
+                android:layout_marginTop="21dp"
+                android:text="@string/My_List_Detail_Price_Text" />
+
+            <com.playbench.winting.views.RegularTextView
+                android:id="@+id/txt_my_list_detail_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextColor"
+                android:textSize="20dp"
+                android:layout_marginTop="6dp"/>
+
+            <Button
+                android:id="@+id/btn_my_list_detail_estimate_move"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/shape_radius_8dp"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:text="@string/My_List_Detail_Estimate_Detail_Button_Text"
+                android:fontFamily="@font/notosanscjkkr_bold"
+                android:includeFontPadding="false"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginLeft="18dp"
+                android:background="@color/colorRGB112"
+                android:layout_marginTop="45dp"/>
+
+            <com.playbench.winting.views.MediumTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextColor"
+                android:textSize="14dp"
+                android:layout_marginTop="29dp"
+                android:text="@string/My_List_Detail_Info_Text"
+                android:gravity="center"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_my_list_detail_img_save"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/stroke_ring"
+                android:text="@string/My_List_Detail_Image_Button_Text"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20dp"
+                android:fontFamily="@font/notosanscjkkr_medium"
+                android:includeFontPadding="false"
+                android:layout_marginLeft="37dp"
+                android:layout_marginRight="37dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_my_list_detail_finish"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/shape_radius_8dp"
+        android:backgroundTint="@color/colorDisable"
+        android:text="@string/My_List_Detail_Finish_Button_Text"
+        android:textColor="@color/colorPlaceHolder"
+        android:textSize="20dp"
+        android:fontFamily="@font/notosanscjkkr_bold"
+        android:includeFontPadding="false"
+        android:layout_marginBottom="20dp"/>
+</LinearLayout>

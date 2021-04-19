@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDisable">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="375"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"/>
+
+        <com.playbench.winting.views.BoldTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="295"
+            android:text="@string/Main_Four_Tab"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="@color/colorTextColor"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:paddingRight="16dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_setting_my_page"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white">
+        <com.playbench.winting.views.MediumTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="@color/colorTextColor"
+            android:paddingLeft="17dp"
+            android:gravity="center_vertical"
+            android:text="@string/Setting_My_Page"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPlaceHolder"/>
+
+    <LinearLayout
+        android:id="@+id/lin_setting_alarm"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white">
+        <com.playbench.winting.views.MediumTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="@color/colorTextColor"
+            android:paddingLeft="17dp"
+            android:gravity="center_vertical"
+            android:text="@string/Setting_Alarm"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPlaceHolder"/>
+
+    <LinearLayout
+        android:id="@+id/lin_setting_agree"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white">
+        <com.playbench.winting.views.MediumTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="@color/colorTextColor"
+            android:paddingLeft="17dp"
+            android:gravity="center_vertical"
+            android:text="@string/Setting_Agree"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPlaceHolder"/>
+
+    <LinearLayout
+        android:id="@+id/lin_setting_license"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white">
+        <com.playbench.winting.views.MediumTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="@color/colorTextColor"
+            android:paddingLeft="17dp"
+            android:gravity="center_vertical"
+            android:text="@string/Setting_License"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPlaceHolder"/>
+</LinearLayout>

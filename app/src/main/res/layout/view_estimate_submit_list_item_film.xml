@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_marginTop="13dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/stroke_no_radius">
+
+            <com.playbench.winting.views.MediumTextView
+                android:id="@+id/txt_estimate_submit_list_item_film"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="12dp"
+                android:textColor="@color/colorTextColor"/>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:src="@drawable/ic_arrow_down"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:layout_marginTop="9dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTextColor"
+                    android:textSize="12dp"
+                    android:text="@string/Estimate_Submit_Square_Meter_Text"/>
+
+                <EditText
+                    android:id="@+id/edt_estimate_submit_list_item_square_meter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/colorTextColor"
+                    android:textColorHint="@color/colorPlaceHolder"
+                    android:textSize="18dp"
+                    android:inputType="number"
+                    android:fontFamily="@font/notosanscjkkr_medium_regular"
+                    android:includeFontPadding="false"
+                    android:hint="@string/Estimate_Submit_Square_Meter_Text_Place_Holder"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="14dp"
+                android:layout_height="match_parent"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorTextColor"
+                    android:textSize="12dp"
+                    android:text="@string/Estimate_Submit_Price"/>
+
+                <EditText
+                    android:id="@+id/edt_estimate_submit_list_item_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/colorTextColor"
+                    android:textColorHint="@color/colorPlaceHolder"
+                    android:textSize="18dp"
+                    android:inputType="number"
+                    android:fontFamily="@font/notosanscjkkr_medium_regular"
+                    android:includeFontPadding="false"
+                    android:hint="@string/Estimate_Submit_Price_Place_Holder"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

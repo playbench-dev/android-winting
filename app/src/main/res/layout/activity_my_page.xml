@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDisable"
+    android:orientation="vertical"
+    tools:context=".Activitys.Setting.MyPageActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="375"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:paddingLeft="16dp"
+            android:src="@drawable/ic_back"/>
+
+        <com.playbench.winting.views.BoldTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="295"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:text="@string/Setting_My_Page"
+            android:textColor="@color/colorTextColor"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center">
+        <com.playbench.winting.views.BoldTextView
+            android:id="@+id/txt_my_page_id"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:textColor="@color/colorTextColor"
+            android:textSize="20dp"/>
+
+        <com.playbench.winting.views.MediumTextView
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:gravity="center"
+            android:textColor="@color/colorTextColor"
+            android:textSize="20dp"
+            android:text="@string/My_Page_Id"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white"
+        android:weightSum="375">
+        <com.playbench.winting.views.MediumTextView
+            android:layout_width="0dp"
+            android:layout_weight="90"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="@color/colorDisableText"
+            android:paddingLeft="17dp"
+            android:gravity="center_vertical"
+            android:text="@string/My_Page_Name"/>
+        <com.playbench.winting.views.BoldTextView
+            android:id="@+id/txt_my_page_name"
+            android:layout_width="0dp"
+            android:layout_weight="265"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="@color/colorTextColor"
+            android:paddingLeft="17dp"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPlaceHolder"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white"
+        android:weightSum="375">
+        <com.playbench.winting.views.MediumTextView
+            android:layout_width="0dp"
+            android:layout_weight="90"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="@color/colorDisableText"
+            android:paddingLeft="17dp"
+            android:gravity="center_vertical"
+            android:text="@string/My_Page_Company"/>
+        <com.playbench.winting.views.BoldTextView
+            android:id="@+id/txt_my_page_company"
+            android:layout_width="0dp"
+            android:layout_weight="265"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="@color/colorTextColor"
+            android:paddingLeft="17dp"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPlaceHolder"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white"
+        android:weightSum="375">
+        <com.playbench.winting.views.MediumTextView
+            android:layout_width="0dp"
+            android:layout_weight="90"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="@color/colorDisableText"
+            android:paddingLeft="17dp"
+            android:gravity="center_vertical"
+            android:text="@string/My_Page_Contact"/>
+        <com.playbench.winting.views.BoldTextView
+            android:id="@+id/txt_my_page_contact"
+            android:layout_width="0dp"
+            android:layout_weight="265"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="@color/colorTextColor"
+            android:paddingLeft="17dp"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPlaceHolder"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white"
+        android:weightSum="375">
+        <com.playbench.winting.views.MediumTextView
+            android:layout_width="0dp"
+            android:layout_weight="90"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="@color/colorDisableText"
+            android:paddingLeft="17dp"
+            android:gravity="center_vertical"
+            android:text="@string/My_Page_Pw"/>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="285">
+            <com.playbench.winting.views.BoldTextView
+                android:id="@+id/txt_my_page_pw_change"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16dp"
+                android:textColor="@color/colorTextColor"
+                android:paddingLeft="17dp"
+                android:gravity="center_vertical"
+                android:text="@string/My_Page_Pw_Text"/>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_arrow_down"
+                android:rotation="-90"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="9dp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPlaceHolder"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/white"
+        android:weightSum="375">
+        <com.playbench.winting.views.MediumTextView
+            android:layout_width="0dp"
+            android:layout_weight="90"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
+            android:textColor="@color/colorDisableText"
+            android:paddingLeft="17dp"
+            android:gravity="center_vertical"
+            android:text="@string/My_Page_Region"/>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="285">
+            <com.playbench.winting.views.BoldTextView
+                android:id="@+id/txt_my_page_region"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16dp"
+                android:textColor="@color/colorTextColor"
+                android:paddingLeft="17dp"
+                android:gravity="center_vertical"/>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_arrow_down"
+                android:rotation="-90"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="9dp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_my_page_info_change"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/shape_radius_8dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/My_Page_Button_Text"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/notosanscjkkr_bold"
+        android:includeFontPadding="false"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center">
+
+        <com.playbench.winting.views.MediumTextView
+            android:id="@+id/txt_my_page_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/My_Page_Logout"
+            android:textColor="@color/colorDisableText"/>
+
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="17dp"
+            android:background="@color/colorDisableText"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"/>
+
+        <com.playbench.winting.views.MediumTextView
+            android:id="@+id/txt_my_page_withdrawal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/My_Page_Withdrawal"
+            android:textColor="@color/colorDisableText"/>
+    </LinearLayout>
+
+</LinearLayout>

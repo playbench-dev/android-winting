@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name"></string>
+
+    <!--    util-->
+    <string name="Film_Dialog_Title">제품 선택</string>
+    <string name="Film_Dialog_Insert_Title_Text">찾으시는 제품이 없으신가요?</string>
+    <string name="Film_Dialog_Insert_Text"><u>제품 추가하기</u></string>
+    <string name="Dialog_Cancel_Button_Text">취소</string>
+    <string name="Dialog_Done_Button_Text">확인</string>
+    <string name="Date_Dialog_Title">날짜선택</string>
+    <string name="Dialog_Logout_Title">로그아웃</string>
+    <string name="Dialog_Logout_Contents">로그아웃 하시겠습니까?</string>
+    <string name="Dialog_Withdrawal_Title">탈퇴</string>
+    <string name="Dialog_Withdrawal_Contents">회원탈퇴 하시겠습니까?</string>
+
+    <!--    LoginActivity    -->
+    <string name="Login_Id_Title">아이디</string>
+    <string name="Login_Id_Hint">아이디를 입력해주세요.</string>
+    <string name="Login_Pw_Title">비밀번호</string>
+    <string name="Login_Pw_Hint">비밀번호를 입력해주세요.</string>
+    <string name="Login_Button_Text">로그인</string>
+    <string name="Login_Id_Search_Text">아이디 찾기</string>
+    <string name="Login_Pw_Search_Text">비밀번호 찾기</string>
+    <string name="Login_Sign_Up_Text"><u>회원가입</u></string>
+    <string name="Agree_Popup_Title">약관동의</string>
+    <string name="Agree_Popup_All_Select">약관 전체 동의</string>
+    <string name="Agree_Popup_First_Title">약관명</string>
+    <string name="Agree_Popup_Second_Title">약관명</string>
+    <string name="Agree_Popup_Third_Title">약관명</string>
+    <string name="Agree_Popup_Detail_Text">상세보기</string>
+    <string name="Agree_Popup_Button_Text">동의</string>
+
+    <!--    RegisterActivity-->
+    <string name="Register_Title">회원가입</string>
+    <string name="Register_Id_Title">아이디</string>
+    <string name="Register_Id_PlaceHolder">아이디를 입력해주세요.</string>
+    <string name="Register_Id_Check_True"></string>
+    <string name="Register_Id_Check_False"></string>
+    <string name="Register_Pw_Title">비밀번호</string>
+    <string name="Register_Pw_PlaceHolder">비밀번호를 입력해주세요.</string>
+    <string name="Register_Pw_Check_True"></string>
+    <string name="Register_Pw_Check_False"></string>
+    <string name="Register_Pw_Confirm_Title">비밀번호 확인</string>
+    <string name="Register_Pw_Confirm_PlaceHolder">비밀번호를 재입력해주세요.</string>
+    <string name="Register_Pw_Confirm_Check_True"></string>
+    <string name="Register_Pw_Confirm_Check_False"></string>
+    <string name="Register_Company_Title">업체선택</string>
+    <string name="Register_Company_PlaceHolder">업체를 선택해주세요.</string>
+    <string name="Register_Name_Title">이름</string>
+    <string name="Register_Name_PlaceHolder">이름을 입력해주세요.</string>
+    <string name="Register_Contact_Title">연락처</string>
+    <string name="Register_Contact_PlaceHolder">연락처를 입력해주세요.</string>
+    <string name="Register_Region_Title">활동 범위 설정</string>
+    <string name="Register_Region_PlaceHolder">활동 가능 범위를 설정해주세요.</string>
+    <string name="Register_Region_Info_Text">선택하신 범위에 대한 내용으로 신규 요청을 확인할 수 있습니다.</string>
+
+    <!--    CompanySearchActivity-->
+    <string name="Company_Search_PlaceHolder">업체명을 검색해주세요.</string>
+    <string name="Company_Search_Close_Text">닫기</string>
+
+    <!--    RegionSearchActivity-->
+    <string name="Region_Search_Title">활동지역</string>
+    <string name="Region_Search_Button_Text">적용</string>
+
+    <!--    MainActivity-->
+    <string name="Main_First_Tab">신규요청</string>
+    <string name="Main_Second_Tab">이력</string>
+    <string name="Main_Third_Tab">My필름</string>
+    <string name="Main_Four_Tab">설정</string>
+
+    <!--    NewRequestFragment-->
+    <string name="New_Reqeust_List_Region_Text">지역</string>
+    <string name="New_Reqeust_List_Progress_Text">진행상태</string>
+    <string name="New_Reqeust_List_Due_Date_Text">예정일</string>
+    <string name="New_Reqeust_List_Register_Date_Text">등록일</string>
+
+    <!--    EstimateDetailActivity-->
+    <string name="Estimate_Detail_Region_Text">위치</string>
+    <string name="Estimate_Detail_Type_Text">시공 건물 형태</string>
+    <string name="Estimate_Detail_Due_Date_Text">시공예정일</string>
+    <string name="Estimate_Detail_Purpose_Text">시공 사유</string>
+    <string name="Estimate_Detail_Description_Text">특이사항</string>
+    <string name="Estimate_Detail_After_Size_Text">규격 정보</string>
+    <string name="Estimate_Detail_Insulation_Text">- 단열</string>
+    <string name="Estimate_Detail_Sheet_Paper_Text">- 시트지</string>
+    <string name="Estimate_Detail_Vertical_Text">가로</string>
+    <string name="Estimate_Detail_Horizontal_Text">세로</string>
+    <string name="Estimate_Detail_Square_Meter_Text">헤베</string>
+    <string name="Estimate_Detail_Paper_Cnt_Text">장</string>
+    <string name="Estimate_Detail_Button_Text">견적 산출하기</string>
+
+    <!--    EstimateSubmitActivity-->
+    <string name="Estimate_Submit_Title">견적산출</string>
+    <string name="Estimate_Submit_Total_Text">총</string>
+    <string name="Estimate_Submit_Film_Title">제품 별 금액 설정</string>
+    <string name="Estimate_Submit_Film_Insert">제품 추가</string>
+    <string name="Estimate_Submit_Square_Meter_Text">헤베</string>
+    <string name="Estimate_Submit_Price">금액</string>
+    <string name="Estimate_Submit_Square_Meter_Text_Place_Holder">헤베를 입력하세요.</string>
+    <string name="Estimate_Submit_Price_Place_Holder">금액을 입력하세요.</string>
+    <string name="Estimate_Submit_Button">다음</string>
+
+    <!--    EstimateInsertActivity-->
+    <string name="Estimate_Insert_Title">견적 미리보기</string>
+    <string name="Estimate_Insert_Info_Title">기본정보</string>
+    <string name="Estimate_Insert_Info_Address">주소</string>
+    <string name="Estimate_Insert_Info_Due_Date">시공 예정일</string>
+    <string name="Estimate_Insert_Info_Form">건물 타입</string>
+    <string name="Estimate_Insert_Film_Info_Title">견적정보</string>
+    <string name="Estimate_Insert_Total_Text">총</string>
+    <string name="Estimate_Insert_Film_Info_Finish_Button">견적보내기</string>
+
+    <!--    FilmInsertActivity-->
+    <string name="Film_Insert_Title">제품등록</string>
+    <string name="Film_Insert_Select_Film">필름</string>
+    <string name="Film_Insert_Select_Sheet">시트지</string>
+    <string name="Film_Insert_Info_Title">제품 기본 정보</string>
+    <string name="Film_Insert_Brand_Text">브랜드</string>
+    <string name="Film_Insert_Brand_Place_Holder_Text">브랜드명을 입력하세요.</string>
+    <string name="Film_Insert_Name_Text">제품명</string>
+    <string name="Film_Insert_Name_Place_Holder_Text">제품명을 입력하세요.</string>
+    <string name="Film_Insert_Spec">제품 스펙</string>
+    <string name="Film_Insert_VLT">가시광선 투과율 (VLT)</string>
+    <string name="Film_Insert_UVR">자외선 차단율 (UVR)</string>
+    <string name="Film_Insert_IRR">열 차단율 (IRR)</string>
+    <string name="Film_Insert_TSER">총 태양열 차단율 (TSER)</string>
+    <string name="Film_Insert_Guarantee">보증기간</string>
+    <string name="Film_Insert_Guarantee_Place_Holder">보증기간을 입력해주세요.</string>
+    <string name="Film_Insert_Spec_Place_Holder">수치를 입력해주세요.</string>
+    <string name="Film_Insert_Percent">%</string>
+    <string name="Film_Insert_Year_Text">년</string>
+    <string name="Film_Insert_Button_Text">저장하기</string>
+
+    <!--    MyListDetailActivity-->
+    <string name="My_List_Detail_Title">이력 상세</string>
+    <string name="My_List_Detail_Save_Text">저장</string>
+    <string name="My_List_Detail_Start_Date_Text">시작일</string>
+    <string name="My_List_Detail_Start_Date_Place_Holder_Text">시작일을 선택해주세요.</string>
+    <string name="My_List_Detail_End_Date_Text">종료일</string>
+    <string name="My_List_Detail_End_Date_Place_Holder_Text">종료일을 선택해주세요.</string>
+    <string name="My_List_Detail_Price_Text">금액</string>
+    <string name="My_List_Detail_Estimate_Detail_Button_Text">견적 상세</string>
+    <string name="My_List_Detail_Info_Text">작업 중이신 사진을 등록, 저장 가능합니다.</string>
+    <string name="My_List_Detail_Image_Button_Text">사진 등록</string>
+    <string name="My_List_Detail_Finish_Button_Text">완료 요청</string>
+
+    <!--    ImageSaveActivity-->
+    <string name="Image_Save_Title">사진등록</string>
+    <string name="Image_Save_Before_Text">시공 전 사진</string>
+    <string name="Image_Save_Current_Text">시공 전/후 비교용 사진</string>
+    <string name="Image_Save_After_Text">시공 후 사진</string>
+    <string name="Image_Save_Info_Text">고객이 확인 할 수 있는 사진입니다.</string>
+    <string name="Image_Save_Button_Text">저장</string>
+
+    <!--    MyFilmFragment-->
+    <string name="My_Film_Brand">브랜드</string>
+    <string name="My_Film_Name">필름 명</string>
+    <string name="My_Film_IRR">열 차단율</string>
+    <string name="My_Film_VRT">가시광선 차단율</string>
+    <string name="My_Film_UVR">자외선 차단율</string>
+    <string name="My_Film_TSER">총 태양열 차단율</string>
+    <string name="My_Film_Percent">%</string>
+    <string name="My_Film_Middle">:</string>
+
+    <!--    SettingFragment-->
+    <string name="Setting_My_Page">마이페이지</string>
+    <string name="Setting_Alarm">알림설정</string>
+    <string name="Setting_Agree">약관안내</string>
+    <string name="Setting_License">라이센스</string>
+
+<!--    MyPageActivity-->
+    <string name="My_Page_Id"> 회원님</string>
+    <string name="My_Page_Name">이름</string>
+    <string name="My_Page_Company">업체</string>
+    <string name="My_Page_Contact">연락처</string>
+    <string name="My_Page_Pw">비밀번호</string>
+    <string name="My_Page_Pw_Text">비밀번호 재설정</string>
+    <string name="My_Page_Region">활동지역</string>
+    <string name="My_Page_Button_Text">회원정보 수정</string>
+    <string name="My_Page_Logout"><u>로그아웃</u></string>
+    <string name="My_Page_Withdrawal"><u>회월탈퇴</u></string>
+
+<!--    PwChangeActivity-->
+    <string name="Pw_Change_Title">비밀번호 변경</string>
+    <string name="Pw_Change_Current_Pw_Text">현재 비밀번호</string>
+    <string name="Pw_Change_Current_Pw_Place_Holder_Text">비밀번호를 입력해주세요.</string>
+    <string name="Pw_Change_Current_Pw_Hint_Text">비밀번호가 일치하지 않습니다.</string>
+    <string name="Pw_Change_New_Pw_Text">새 비밀번호</string>
+    <string name="Pw_Change_New_Pw_Place_Holder_Text">새 비밀번호를 입력해주세요.</string>
+    <string name="Pw_Change_New_Pw_Hint_Complete_Text">사용가능한 비밀번호입니다.</string>
+    <string name="Pw_Change_New_Pw_Hint_Error_Text">비밀번호 형식이 올바르지 않습니다.</string>
+    <string name="Pw_Change_New_Confirm_Pw_Text">새 비밀번호 확인</string>
+    <string name="Pw_Change_New_Confirm_Pw_Place_Holder_Text">새 비밀번호를 재확인해주세요.</string>
+    <string name="Pw_Change_New_Confirm_Pw_Hint_Complete_Text">새 비밀번호와 일치합니다.</string>
+    <string name="Pw_Change_New_Confirm_Pw_Hint_Error_Text">새 비밀번호와 일치하지 않습니다.</string>
+    <string name="Pw_Change_Button_Text">수정</string>
+
+<!--AlarmSettingActivity-->
+    <string name="Alarm_Setting_Title">알림설정</string>
+    <string name="Alarm_Setting_New_Alarm_Text">신규요청 알림</string>
+    <string name="Alarm_Setting_Progress_Text">시공 진행 알림</string>
+
+    <!--    AgreeActivity-->
+    <string name="Agree_Title">약관안내</string>
+    <string name="Agree_Service_Text">개인정보 처리방침</string>
+
+    <!--    LicenseActivity-->
+    <string name="License_Title">라이센스</string>
+</resources>

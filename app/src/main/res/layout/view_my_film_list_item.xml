@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:paddingLeft="16dp"
+        android:background="@color/white">
+
+        <com.playbench.winting.views.BoldTextView
+            android:id="@+id/txt_my_film_list_item_brand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextColor"
+            android:textSize="16dp"/>
+
+        <com.playbench.winting.views.BoldTextView
+            android:id="@+id/txt_my_film_list_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextColor"
+            android:textSize="16dp"/>
+
+        <LinearLayout
+            android:id="@+id/lin_my_film_list_item_visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.playbench.winting.views.MediumTextView
+                    android:id="@+id/txt_my_film_list_item_irr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/colorTextColor" />
+
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/txt_my_film_list_item_vlt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/colorTextColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.playbench.winting.views.MediumTextView
+                    android:id="@+id/txt_my_film_list_item_uvr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/colorTextColor" />
+
+                <com.playbench.winting.views.MediumTextView
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/txt_my_film_list_item_tser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="@color/colorTextColor" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+</LinearLayout>
