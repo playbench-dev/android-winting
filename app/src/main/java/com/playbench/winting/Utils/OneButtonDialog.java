@@ -1,6 +1,5 @@
 package com.playbench.winting.Utils;
 
-import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -20,9 +19,8 @@ import androidx.fragment.app.DialogFragment;
 import com.playbench.winting.R;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
-public class TwoButtonDialog extends DialogFragment {
+public class OneButtonDialog extends DialogFragment {
 
     SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
     SharedPreferences preferences;
@@ -31,17 +29,17 @@ public class TwoButtonDialog extends DialogFragment {
     String title = "";
     String contents = "";
 
-    public TwoButtonDialog(String title, String contents, ConfirmButtonListener confirmButtonListener) {
+    public OneButtonDialog(String title, String contents, ConfirmButtonListener confirmButtonListener) {
         this.confirmButtonListener = confirmButtonListener;
         this.title = title;
         this.contents = contents;
     }
 
-    public TwoButtonDialog(ConfirmButtonListener confirmButtonListener) {
+    public OneButtonDialog(ConfirmButtonListener confirmButtonListener) {
         this.confirmButtonListener = confirmButtonListener;
     }
 
-    public TwoButtonDialog() {
+    public OneButtonDialog() {
     }
 
     @Override
@@ -56,10 +54,9 @@ public class TwoButtonDialog extends DialogFragment {
         Button cancelButton, confirmButton;
         final DatePicker datePicker;
         final Dialog dialog = getDialog();
-        TextView mTextTitle = (TextView) dialog.findViewById(R.id.txt_two_btn_dialog_title);
-        TextView mTextContents = (TextView) dialog.findViewById(R.id.txt_two_btn_dialog_contents);
-        cancelButton = (Button) dialog.findViewById(R.id.btn_two_btn_dialog_cancel);
-        confirmButton = (Button) dialog.findViewById(R.id.btn_two_btn_dialog_done);
+        TextView mTextTitle = (TextView) dialog.findViewById(R.id.txt_one_btn_dialog_title);
+        TextView mTextContents = (TextView) dialog.findViewById(R.id.txt_one_btn_dialog_contents);
+        confirmButton = (Button) dialog.findViewById(R.id.btn_one_btn_dialog_done);
 
         mTextTitle.setText(title);
         mTextContents.setText(contents);
@@ -77,15 +74,7 @@ public class TwoButtonDialog extends DialogFragment {
 
         dialog.setCancelable(false);
 
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-
         confirmButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 if(confirmButtonListener !=null){
@@ -108,7 +97,7 @@ public class TwoButtonDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.view_two_btn_dialog, container, false);
+        View v = inflater.inflate(R.layout.view_one_btn_dialog, container, false);
 
         return v;
     }
@@ -117,4 +106,3 @@ public class TwoButtonDialog extends DialogFragment {
         void confirmButton(View v);
     }
 }
-

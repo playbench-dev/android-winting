@@ -40,7 +40,7 @@
             android:textColor="@color/colorTextColor"
             android:textSize="12dp"
             android:gravity="center"
-            android:text="@string/New_Reqeust_List_Region_Text"/>
+            android:text="@string/My_List_Region"/>
 
         <com.playbench.winting.views.BoldTextView
             android:layout_width="0dp"
@@ -49,7 +49,7 @@
             android:textColor="@color/colorTextColor"
             android:textSize="12dp"
             android:gravity="center"
-            android:text="@string/New_Reqeust_List_Progress_Text"/>
+            android:text="@string/My_List_Progress"/>
 
         <com.playbench.winting.views.BoldTextView
             android:layout_width="0dp"
@@ -58,7 +58,7 @@
             android:textColor="@color/colorTextColor"
             android:textSize="12dp"
             android:gravity="center"
-            android:text="@string/New_Reqeust_List_Due_Date_Text"/>
+            android:text="@string/My_List_Start_Date"/>
 
         <com.playbench.winting.views.BoldTextView
             android:layout_width="0dp"
@@ -67,7 +67,16 @@
             android:textColor="@color/colorTextColor"
             android:textSize="12dp"
             android:gravity="center"
-            android:text="@string/New_Reqeust_List_Register_Date_Text"/>
+            android:text="@string/My_List_End_Date"/>
+
+        <com.playbench.winting.views.BoldTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/colorTextColor"
+            android:textSize="12dp"
+            android:gravity="center"
+            android:text="@string/My_List_Price"/>
     </LinearLayout>
 
     <LinearLayout

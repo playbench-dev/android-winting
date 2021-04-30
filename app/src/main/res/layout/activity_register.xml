@@ -70,8 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="@string/Register_Id_Check_False"
-                    android:textColor="@color/colorTextColor"/>
+                    android:visibility="invisible"/>
             </LinearLayout>
 
             <LinearLayout
@@ -102,8 +101,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="@string/Register_Pw_Check_False"
-                    android:textColor="@color/colorTextColor"/>
+                    android:text=""
+                    android:visibility="invisible"/>
             </LinearLayout>
 
             <LinearLayout
@@ -134,8 +133,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="10dp"
-                    android:text="@string/Register_Pw_Confirm_Check_False"
-                    android:textColor="@color/colorTextColor"/>
+                    android:visibility="invisible"/>
             </LinearLayout>
 
             <LinearLayout

@@ -52,6 +52,7 @@
                 android:textColorHint="@color/colorDisableText"
                 android:hint="@string/Login_Id_Hint"
                 android:textSize="20dp"
+                android:inputType="text"
                 android:fontFamily="@font/notosanscjkkr_medium_regular"
                 android:includeFontPadding="false"
                 android:background="@null"/>
@@ -92,6 +93,7 @@
                 android:textColorHint="@color/colorDisableText"
                 android:hint="@string/Login_Pw_Hint"
                 android:textSize="20dp"
+                android:inputType="textPassword"
                 android:fontFamily="@font/notosanscjkkr_medium_regular"
                 android:includeFontPadding="false"
                 android:background="@null"/>

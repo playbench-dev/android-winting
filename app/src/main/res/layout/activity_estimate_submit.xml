@@ -50,129 +50,143 @@
                 android:layout_marginLeft="16dp"
                 android:text="@string/Estimate_Detail_After_Size_Text"/>
 
-            <com.playbench.winting.views.MediumTextView
-                android:id="@+id/txt_estimate_submit_insulation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14dp"
-                android:text="@string/Estimate_Detail_Insulation_Text"
-                android:layout_marginTop="4dp"
-                android:layout_marginLeft="29dp"
-                android:textColor="@color/colorTextColor"/>
-
             <LinearLayout
-                android:id="@+id/lin_estimate_submit_insulation_parent"
+                android:id="@+id/lin_estimate_submit_insulation_visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="29dp"
-                android:layout_marginRight="29dp"
-                android:layout_marginTop="4dp"
                 android:orientation="vertical"
-                android:background="@drawable/stroke_no_radius"
-                android:backgroundTint="@color/colorTextColor">
+                android:visibility="gone">
+                <com.playbench.winting.views.MediumTextView
+                    android:id="@+id/txt_estimate_submit_insulation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:text="@string/Estimate_Detail_Insulation_Text"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginLeft="29dp"
+                    android:textColor="@color/colorTextColor"/>
 
                 <LinearLayout
+                    android:id="@+id/lin_estimate_submit_insulation_parent"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="29dp"
+                    android:layout_marginRight="29dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/stroke_no_radius"
+                    android:backgroundTint="@color/colorTextColor">
 
-                    <com.playbench.winting.views.MediumTextView
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/Estimate_Detail_Vertical_Text"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="14dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <com.playbench.winting.views.MediumTextView
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/Estimate_Detail_Horizontal_Text"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="14dp"/>
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/Estimate_Detail_Vertical_Text"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
 
-                    <com.playbench.winting.views.MediumTextView
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/Estimate_Detail_Paper_Cnt_Text"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="14dp"/>
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/Estimate_Detail_Horizontal_Text"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
 
-                    <com.playbench.winting.views.MediumTextView
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/Estimate_Detail_Square_Meter_Text"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="14dp"/>
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/Estimate_Detail_Paper_Cnt_Text"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
+
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/Estimate_Detail_Square_Meter_Text"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
-            <com.playbench.winting.views.MediumTextView
-                android:id="@+id/txt_estimate_submit_sheet"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14dp"
-                android:text="@string/Estimate_Detail_Sheet_Paper_Text"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="29dp"
-                android:textColor="@color/colorTextColor"/>
-
             <LinearLayout
-                android:id="@+id/lin_estimate_submit_sheet_parent"
+                android:id="@+id/lin_estimate_submit_sheet_visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="29dp"
-                android:layout_marginRight="29dp"
-                android:layout_marginTop="4dp"
                 android:orientation="vertical"
-                android:background="@drawable/stroke_no_radius"
-                android:backgroundTint="@color/colorTextColor">
+                android:visibility="gone">
+                <com.playbench.winting.views.MediumTextView
+                    android:id="@+id/txt_estimate_submit_sheet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:text="@string/Estimate_Detail_Sheet_Paper_Text"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="29dp"
+                    android:textColor="@color/colorTextColor"/>
 
                 <LinearLayout
+                    android:id="@+id/lin_estimate_submit_sheet_parent"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="29dp"
+                    android:layout_marginRight="29dp"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/stroke_no_radius"
+                    android:backgroundTint="@color/colorTextColor">
 
-                    <com.playbench.winting.views.MediumTextView
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_weight="1"
-                        android:text="@string/Estimate_Detail_Vertical_Text"
-                        android:gravity="center"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="14dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <com.playbench.winting.views.MediumTextView
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_weight="1"
-                        android:text="@string/Estimate_Detail_Horizontal_Text"
-                        android:gravity="center"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="14dp"/>
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:text="@string/Estimate_Detail_Vertical_Text"
+                            android:gravity="center"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
 
-                    <com.playbench.winting.views.MediumTextView
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/Estimate_Detail_Paper_Cnt_Text"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="14dp"/>
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:text="@string/Estimate_Detail_Horizontal_Text"
+                            android:gravity="center"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
 
-                    <com.playbench.winting.views.MediumTextView
-                        android:layout_width="0dp"
-                        android:layout_height="20dp"
-                        android:layout_weight="1"
-                        android:text="@string/Estimate_Detail_Square_Meter_Text"
-                        android:gravity="center"
-                        android:textColor="@color/colorTextColor"
-                        android:textSize="14dp"/>
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/Estimate_Detail_Paper_Cnt_Text"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
+
+                        <com.playbench.winting.views.MediumTextView
+                            android:layout_width="0dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:text="@string/Estimate_Detail_Square_Meter_Text"
+                            android:gravity="center"
+                            android:textColor="@color/colorTextColor"
+                            android:textSize="14dp"/>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 

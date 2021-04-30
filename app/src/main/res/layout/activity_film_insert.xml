@@ -21,6 +21,7 @@
             android:src="@drawable/ic_back"/>
 
         <com.playbench.winting.views.BoldTextView
+            android:id="@+id/txt_film_insert_title"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="295"
@@ -28,6 +29,15 @@
             android:gravity="center"
             android:textColor="@color/colorTextColor"
             android:textSize="20dp"/>
+
+        <ImageView
+            android:id="@+id/img_film_insert_delete"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:paddingRight="16dp"
+            android:src="@drawable/ic_delete"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 
@@ -107,6 +117,7 @@
                 android:hint="@string/Film_Insert_Brand_Place_Holder_Text"
                 android:layout_marginTop="6dp"
                 android:textSize="20dp"
+                android:inputType="text"
                 android:textColor="@color/colorTextColor"
                 android:textColorHint="@color/colorPlaceHolder"/>
 
@@ -125,6 +136,7 @@
                 android:hint="@string/Film_Insert_Name_Place_Holder_Text"
                 android:layout_marginTop="6dp"
                 android:textSize="20dp"
+                android:inputType="text"
                 android:textColor="@color/colorTextColor"
                 android:textColorHint="@color/colorPlaceHolder"/>
 

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorDisable">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:weightSum="375">
+        android:weightSum="375"
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -32,17 +34,17 @@
             android:tint="@color/colorTextColor"/>
     </LinearLayout>
 
-    <ScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_my_film"
+        android:layout_marginTop="9dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorDisable">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/lin_my_film_insert_list_item"
+        <ListView
+            android:id="@+id/list_my_film"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-        </LinearLayout>
-    </ScrollView>
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="10dp"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

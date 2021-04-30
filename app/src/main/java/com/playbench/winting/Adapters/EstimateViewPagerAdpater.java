@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
 import com.playbench.winting.R;
+import com.playbench.winting.Utils.Server;
 
 import java.util.ArrayList;
 
@@ -34,7 +36,9 @@ public class EstimateViewPagerAdpater extends PagerAdapter {
         View view = inflater.inflate(R.layout.view_pager_image_item, null);
         ImageView imageView = view.findViewById(R.id.img_view_pager_item);
 
-        imageView.setImageResource(R.drawable.img_test);
+        Glide.with(mContext).load(Server.serverUrl +mItemArrayList.get(position)).into(imageView);
+
+//        imageView.setImageResource(R.drawable.img_test);
         (container).addView(view);
 
         return view;

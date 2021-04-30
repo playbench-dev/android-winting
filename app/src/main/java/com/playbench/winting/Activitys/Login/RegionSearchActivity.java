@@ -23,7 +23,7 @@ public class RegionSearchActivity extends AppCompatActivity implements View.OnCl
     private LinearLayout            mLinearListParent;
     private Button                  mButtonDone;
 
-    private String[]                mCodeList = new String[]{"1100000000", "2600000000", "2700000000", "2800000000", "2900000000", "3000000000", "3100000000", "3600000000", "4100000000", "4200000000", "4300000000", "4400000000", "4500000000", "4600000000", "4700000000", "4800000000", "5000000000"};
+    private String[]                mCodeList = new String[]{"11", "26", "27", "28", "29", "30", "31", "36", "41", "42", "43", "44", "45", "46", "47", "48", "50"};
     private String[]                mNameList = new String[]{"서울특별시", "부산광역시", "대구광역시", "인천광역시", "광주광역시", "대전광역시", "울산광역시", "세종특별자치시", "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도", "경상북도", "경상남도", "제주특별자치도"};
     private String                  mRegionString = "";
     private Intent                  mBeforeIntent;
@@ -36,9 +36,10 @@ public class RegionSearchActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_region_search);
 
         mBeforeIntent               = getIntent();
+
         if (mBeforeIntent.hasExtra("regionList")){
             if (mBeforeIntent.getStringExtra("regionList").length() > 0)
-            mRegionList = mBeforeIntent.getStringExtra("regionList").split(",");
+            mRegionList = mBeforeIntent.getStringExtra("regionList").split("/");
         }
 
         FindViewById();
@@ -113,7 +114,7 @@ public class RegionSearchActivity extends AppCompatActivity implements View.OnCl
                         if (i == 0){
                             mRegionString += mRegionSelect.get(i);
                         }else{
-                            mRegionString += ","+mRegionSelect.get(i);
+                            mRegionString += "/"+mRegionSelect.get(i);
                         }
                     }
                     Intent intent = new Intent();

@@ -25,6 +25,7 @@ public class FilmSelectDialog extends Dialog implements View.OnClickListener {
     private FilmSelectDialog.OkbuttonClickListener okButtonClickListener = null;
     private FilmSelectDialog.CancelButtonClickListener cancelButtonClickListener = null;
     private FilmSelectDialog.FilmInsertButtonClickListener filmInsertButtonClickListener = null;
+    private FilmSelectDialog.TextButtonClickListener textButtonClickListener = null;
     private Button mButtonCancel;
     private Button mButtonDone;
     private TextView mTextFilmInsert;
@@ -33,7 +34,7 @@ public class FilmSelectDialog extends Dialog implements View.OnClickListener {
     private ArrayList<MyFilmItem> myFilmItemArrayList = new ArrayList<>();
     /////////////////////////////////////////////////////////////////////////////////////////////
     public interface OkbuttonClickListener {
-        void OkButtonClick(String film);
+        void OkButtonClick(String film, int idx);
     }
 
     public void setOkButtonClickListener(FilmSelectDialog.OkbuttonClickListener okbuttonClickListener) {
@@ -56,6 +57,14 @@ public class FilmSelectDialog extends Dialog implements View.OnClickListener {
 
     public void setfilmInsertButtonClickListener(FilmSelectDialog.FilmInsertButtonClickListener filmInsertButtonClickListener) {
         this.filmInsertButtonClickListener = filmInsertButtonClickListener;
+    }
+
+    public interface TextButtonClickListener {
+        void TextButtonClickListener(View v);
+    }
+
+    public void setTextButtonClickListener(FilmSelectDialog.TextButtonClickListener textButtonClickListener) {
+        this.textButtonClickListener = textButtonClickListener;
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////
@@ -119,7 +128,7 @@ public class FilmSelectDialog extends Dialog implements View.OnClickListener {
             }
             case R.id.btn_dialog_done: {
                 if(okButtonClickListener !=null){
-                    okButtonClickListener.OkButtonClick(myFilmItemArrayList.get(mPicker.getValue()).getFilmName());
+                    okButtonClickListener.OkButtonClick(myFilmItemArrayList.get(mPicker.getValue()).getFilmName(),mPicker.getValue());
                     dismiss();
                 }else {
                     dismiss();
@@ -127,9 +136,12 @@ public class FilmSelectDialog extends Dialog implements View.OnClickListener {
                 break;
             }
             case R.id.txt_dialog_film_insert : {
-                dismiss();
-                Intent intent = new Intent(context, FilmInsertActivity.class);
-                context.startActivity(intent);
+                if(textButtonClickListener !=null){
+                    textButtonClickListener.TextButtonClickListener(v);
+                    dismiss();
+                }else{
+                    dismiss();
+                }
                 break;
             }
         }

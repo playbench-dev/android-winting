@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Winting"
+        android:configChanges="keyboardHidden|orientation|screenSize"
         android:usesCleartextTraffic="true">
         <activity android:name=".Activitys.Setting.LicenseActivity"></activity>
         <activity android:name=".Activitys.Setting.AlarmSettingActivity" />

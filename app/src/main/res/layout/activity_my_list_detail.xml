@@ -28,16 +28,6 @@
             android:gravity="center"
             android:textColor="@color/colorTextColor"
             android:textSize="20dp"/>
-
-        <com.playbench.winting.views.MediumTextView
-            android:id="@+id/txt_my_list_detail_save"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="40"
-            android:text="@string/My_List_Detail_Save_Text"
-            android:textSize="16dp"
-            android:textColor="@color/colorTextColor"
-            android:gravity="center_vertical"/>
     </LinearLayout>
 
     <ScrollView

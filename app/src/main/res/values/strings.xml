@@ -15,6 +15,7 @@
     <string name="Dialog_Withdrawal_Contents">회원탈퇴 하시겠습니까?</string>
 
     <!--    LoginActivity    -->
+    <string name="Login_Title">로그인</string>
     <string name="Login_Id_Title">아이디</string>
     <string name="Login_Id_Hint">아이디를 입력해주세요.</string>
     <string name="Login_Pw_Title">비밀번호</string>
@@ -35,16 +36,16 @@
     <string name="Register_Title">회원가입</string>
     <string name="Register_Id_Title">아이디</string>
     <string name="Register_Id_PlaceHolder">아이디를 입력해주세요.</string>
-    <string name="Register_Id_Check_True"></string>
-    <string name="Register_Id_Check_False"></string>
+    <string name="Register_Id_Check_True">사용가능한 아이디입니다.</string>
+    <string name="Register_Id_Check_False">이미 사용중인 아이디입니다.</string>
     <string name="Register_Pw_Title">비밀번호</string>
     <string name="Register_Pw_PlaceHolder">비밀번호를 입력해주세요.</string>
-    <string name="Register_Pw_Check_True"></string>
-    <string name="Register_Pw_Check_False"></string>
+    <string name="Register_Pw_Check_True">사용가능한 비밀번호입니다.</string>
+    <string name="Register_Pw_Check_False">영문, 숫자 포함 6자 이상이어야합니다.</string>
     <string name="Register_Pw_Confirm_Title">비밀번호 확인</string>
     <string name="Register_Pw_Confirm_PlaceHolder">비밀번호를 재입력해주세요.</string>
-    <string name="Register_Pw_Confirm_Check_True"></string>
-    <string name="Register_Pw_Confirm_Check_False"></string>
+    <string name="Register_Pw_Confirm_Check_True">비밀번호와 일치합니다.</string>
+    <string name="Register_Pw_Confirm_Check_False">비밀번호가 일치하지않습니다.</string>
     <string name="Register_Company_Title">업체선택</string>
     <string name="Register_Company_PlaceHolder">업체를 선택해주세요.</string>
     <string name="Register_Name_Title">이름</string>
@@ -54,10 +55,13 @@
     <string name="Register_Region_Title">활동 범위 설정</string>
     <string name="Register_Region_PlaceHolder">활동 가능 범위를 설정해주세요.</string>
     <string name="Register_Region_Info_Text">선택하신 범위에 대한 내용으로 신규 요청을 확인할 수 있습니다.</string>
+    <string name="Register_Success_Title">가입안내</string>
+    <string name="Register_Success_Contents">가입을 축하드립니다.\n관리자의 승인 후 사용이 가능합니다.</string>
 
     <!--    CompanySearchActivity-->
     <string name="Company_Search_PlaceHolder">업체명을 검색해주세요.</string>
     <string name="Company_Search_Close_Text">닫기</string>
+    <string name="Company_Search_Boss_Between_Contact"> / </string>
 
     <!--    RegionSearchActivity-->
     <string name="Region_Search_Title">활동지역</string>
@@ -76,6 +80,7 @@
     <string name="New_Reqeust_List_Register_Date_Text">등록일</string>
 
     <!--    EstimateDetailActivity-->
+    <string name="Estimate_Detail_Title">견적상세</string>
     <string name="Estimate_Detail_Region_Text">위치</string>
     <string name="Estimate_Detail_Type_Text">시공 건물 형태</string>
     <string name="Estimate_Detail_Due_Date_Text">시공예정일</string>
@@ -95,6 +100,7 @@
     <string name="Estimate_Submit_Total_Text">총</string>
     <string name="Estimate_Submit_Film_Title">제품 별 금액 설정</string>
     <string name="Estimate_Submit_Film_Insert">제품 추가</string>
+    <string name="Estimate_Submit_Film_Select_Place_Holder">제품을 선택해주세요.</string>
     <string name="Estimate_Submit_Square_Meter_Text">헤베</string>
     <string name="Estimate_Submit_Price">금액</string>
     <string name="Estimate_Submit_Square_Meter_Text_Place_Holder">헤베를 입력하세요.</string>
@@ -113,6 +119,8 @@
 
     <!--    FilmInsertActivity-->
     <string name="Film_Insert_Title">제품등록</string>
+    <string name="Film_Edit_Title">제품수정</string>
+    <string name="Film_Edit_Delete">제품을 삭제하시겠습니까?</string>
     <string name="Film_Insert_Select_Film">필름</string>
     <string name="Film_Insert_Select_Sheet">시트지</string>
     <string name="Film_Insert_Info_Title">제품 기본 정보</string>
@@ -131,6 +139,14 @@
     <string name="Film_Insert_Percent">%</string>
     <string name="Film_Insert_Year_Text">년</string>
     <string name="Film_Insert_Button_Text">저장하기</string>
+    <string name="Film_Edit_Button_Text">수정하기</string>
+
+<!--    MyListFragment-->
+    <string name="My_List_Region">지역</string>
+    <string name="My_List_Progress">진행상태</string>
+    <string name="My_List_Start_Date">시작일</string>
+    <string name="My_List_End_Date">마감일</string>
+    <string name="My_List_Price">금액</string>
 
     <!--    MyListDetailActivity-->
     <string name="My_List_Detail_Title">이력 상세</string>
@@ -144,6 +160,7 @@
     <string name="My_List_Detail_Info_Text">작업 중이신 사진을 등록, 저장 가능합니다.</string>
     <string name="My_List_Detail_Image_Button_Text">사진 등록</string>
     <string name="My_List_Detail_Finish_Button_Text">완료 요청</string>
+    <string name="My_List_Detail_Finish_Contents">완료신청 시\n해당 시공 관련 내용을\n더이상 수정하실 수 없습니다.\n완료신청을 하시겠습니까?</string>
 
     <!--    ImageSaveActivity-->
     <string name="Image_Save_Title">사진등록</string>

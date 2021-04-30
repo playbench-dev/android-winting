@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorTextColor"
                 android:textSize="20dp"
-                android:text="@string/Estimate_Insert_Title"
+                android:text="@string/Estimate_Insert_Info_Title"
                 android:layout_marginTop="4dp"/>
 
             <com.playbench.winting.views.MediumTextView
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorTextColor"
                 android:textSize="20dp"
-                android:text="@string/Estimate_Insert_Info_Title"
+                android:text="@string/Estimate_Insert_Film_Info_Title"
                 android:layout_marginTop="28dp"/>
 
             <LinearLayout

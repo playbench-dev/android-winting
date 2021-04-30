@@ -7,50 +7,56 @@
         android:layout_width="match_parent"
         android:layout_height="48dp">
 
-        <RelativeLayout
+        <com.playbench.winting.views.MediumTextView
+            android:id="@+id/txt_my_list_item_region"
             android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-            <com.playbench.winting.views.MediumTextView
-                android:id="@+id/txt_new_request_list_item_region"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textColor="@color/colorTextColor"
-                android:textSize="10dp"
-                android:gravity="center"
-                android:text="@string/New_Reqeust_List_Region_Text"/>
-        </RelativeLayout>
-    
+            android:textColor="@color/colorTextColor"
+            android:textSize="10dp"
+            android:gravity="center"
+            android:text="@string/My_List_Region"/>
+
 
         <com.playbench.winting.views.MediumTextView
-            android:id="@+id/txt_new_request_list_item_progress"
+            android:id="@+id/txt_my_list_item_progress"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textColor="@color/colorTextColor"
             android:textSize="10dp"
             android:gravity="center"
-            android:text="@string/New_Reqeust_List_Progress_Text"/>
+            android:text="@string/My_List_Progress"/>
 
         <com.playbench.winting.views.MediumTextView
-            android:id="@+id/txt_new_request_list_item_due_date"
+            android:id="@+id/txt_my_list_item_due_date"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textColor="@color/colorTextColor"
             android:textSize="10dp"
             android:gravity="center"
-            android:text="@string/New_Reqeust_List_Due_Date_Text"/>
+            android:text="@string/My_List_Start_Date"/>
 
         <com.playbench.winting.views.MediumTextView
-            android:id="@+id/txt_new_request_list_item_reg_date"
+            android:id="@+id/txt_my_list_item_reg_date"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textColor="@color/colorTextColor"
             android:textSize="10dp"
             android:gravity="center"
-            android:text="@string/New_Reqeust_List_Register_Date_Text"/>
+            android:text="@string/My_List_End_Date"/>
+
+        <com.playbench.winting.views.MediumTextView
+            android:id="@+id/txt_my_list_item_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="@color/colorTextColor"
+            android:textSize="10dp"
+            android:gravity="center"
+            android:text="@string/My_List_Price"/>
     </LinearLayout>
-    
+
 </LinearLayout>

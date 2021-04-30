@@ -15,6 +15,8 @@ import com.playbench.winting.R;
 
 import java.util.ArrayList;
 
+import static com.playbench.winting.Utils.Util.DueDate;
+
 public class NewRequestAdapter extends BaseAdapter {
 
     private Context                     mContext;
@@ -54,7 +56,6 @@ public class NewRequestAdapter extends BaseAdapter {
             viewHolder.mTextProgress = view.findViewById(R.id.txt_new_request_list_item_progress);
             viewHolder.mTextDueDate = view.findViewById(R.id.txt_new_request_list_item_due_date);
             viewHolder.mTextRegDate = view.findViewById(R.id.txt_new_request_list_item_reg_date);
-            viewHolder.mNewTag = view.findViewById(R.id.img_new_request_list_item_tag);
 
             view.setTag(viewHolder);
         }else{
@@ -63,19 +64,14 @@ public class NewRequestAdapter extends BaseAdapter {
 
         viewHolder.mTextRegion.setText(mItemArrayList.get(i).getmRegion());
         viewHolder.mTextProgress.setText(mItemArrayList.get(i).getmProgress());
-        viewHolder.mTextDueDate.setText(mItemArrayList.get(i).getmDueDate());
-        viewHolder.mTextRegDate.setText(mItemArrayList.get(i).getmRegDate());
-
-        if (mItemArrayList.get(i).getmForm().equals("N")){
-            viewHolder.mNewTag.setVisibility(View.INVISIBLE);
-        }else{
-            viewHolder.mNewTag.setVisibility(View.VISIBLE);
-        }
+        viewHolder.mTextDueDate.setText(DueDate(mItemArrayList.get(i).getmDueDate()));
+        viewHolder.mTextRegDate.setText(mItemArrayList.get(i).getmRegDate().substring(0,10));
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, EstimateDetailActivity.class);
+                intent.putExtra("orderNo",mItemArrayList.get(i).getmOrderNo());
                 mContext.startActivity(intent);
             }
         });
@@ -88,7 +84,6 @@ public class NewRequestAdapter extends BaseAdapter {
         public TextView mTextProgress;
         public TextView mTextDueDate;
         public TextView mTextRegDate;
-        public ImageView mNewTag;
     }
 
     public void addItem(NewRequestItem newRequestItem){

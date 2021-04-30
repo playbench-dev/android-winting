@@ -13,6 +13,15 @@ public class NewRequestItem {
     String mDueDate;
     String mRegDate;
     String mForm;
+    String mAfterSize;
+
+    public String getmAfterSize() {
+        return mAfterSize;
+    }
+
+    public void setmAfterSize(String mAfterSize) {
+        this.mAfterSize = mAfterSize;
+    }
 
     public String getmOrderNo() {
         return mOrderNo;

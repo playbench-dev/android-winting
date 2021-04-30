@@ -189,9 +189,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
         android:background="@color/white"
-        android:weightSum="375">
+        android:weightSum="375"
+        android:gravity="center_vertical">
         <com.playbench.winting.views.MediumTextView
             android:layout_width="0dp"
             android:layout_weight="90"
@@ -208,19 +209,21 @@
             <com.playbench.winting.views.BoldTextView
                 android:id="@+id/txt_my_page_region"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:textSize="16dp"
                 android:textColor="@color/colorTextColor"
                 android:paddingLeft="17dp"
-                android:gravity="center_vertical"/>
+                android:paddingRight="35dp"
+                android:layout_centerVertical="true" />
 
             <ImageView
                 android:layout_width="24dp"
-                android:layout_height="match_parent"
+                android:layout_height="56dp"
                 android:src="@drawable/ic_arrow_down"
                 android:rotation="-90"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="9dp"/>
+                android:layout_marginRight="9dp"
+                android:layout_centerVertical="true" />
         </RelativeLayout>
 
     </LinearLayout>
