@@ -99,6 +99,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
                 holder.txtCheck.setText("");
             }
         }
+
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,52 +137,23 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
                     filePath.deleteOnExit();
                     ((GalleryActivity)mContext).startActivityForResult(intent,2222);
                 }else {
-                    adapter = new ImgDetailViewPagerAdapter(mContext, itemArrayLists);
-                    final BottomSheetDialog dialog = new BottomSheetDialog(mContext);
-                    LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                    View contentView = inflater.inflate(R.layout.view_img_detail_viewpager, null);
-
-                    ViewPager viewPagerDetail = (ViewPager) contentView.findViewById(R.id.view_pager_img_detail);
-                    TextView txtClose = (TextView) contentView.findViewById(R.id.txt_img_detail);
-
-                    DisplayMetrics dm = mContext.getResources().getDisplayMetrics();
-                    int height = dm.heightPixels;
-
-                    WindowManager.LayoutParams params = new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 500);
-                    dialog.addContentView(contentView, params);
-
-                    viewPagerDetail.setAdapter(adapter);
-                    viewPagerDetail.setCurrentItem(position);
-
-                    viewPagerDetail.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                        float tempPositionOffset = 0;
-                        @Override
-                        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                            if ((position) == 0) {
-                                if (tempPositionOffset < positionOffset) {
-                                    viewPagerDetail.setCurrentItem(1);
-                                }
-                            }
+                    if (GalleryActivity.galleryImagePathList.contains(getImageInfo(itemArrayLists.get(position).getIdTest()))){
+                        holder.txtCheck.setBackgroundResource(0);
+                        GalleryActivity.galleryImagePathList.remove(getImageInfo(itemArrayLists.get(position).getIdTest()));
+                        holder.txtCheck.setText("");
+                        notifyDataSetChanged();
+                    }else{
+//                    if (GalleryActivity.galleryImagePathList.size() < 5){
+                        holder.txtCheck.setBackgroundResource(R.drawable.shape_radius_ring);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            holder.txtCheck.setBackgroundTintList(mContext.getResources().getColorStateList(R.color.colorPrimary));
                         }
-
-                        @Override
-                        public void onPageSelected(int position) {
-                            viewPagerDetail.setCurrentItem(position);
-                        }
-
-                        @Override
-                        public void onPageScrollStateChanged(int state) {
-
-                        }
-                    });
-                    dialog.show();
-
-                    txtClose.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dialog.dismiss();
-                        }
-                    });
+                        GalleryActivity.galleryImagePathList.add(getImageInfo(itemArrayLists.get(position).getIdTest()));
+                        holder.txtCheck.setText(""+ GalleryActivity.galleryImagePathList.size());
+//                    }else{
+//                        Toast.makeText(mContext, "사진은 첨부는 5장까지 가능합니다.", Toast.LENGTH_SHORT).show();
+//                    }
+                    }
                 }
             }
         });
@@ -195,16 +167,16 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.PhotoVie
                     holder.txtCheck.setText("");
                     notifyDataSetChanged();
                 }else{
-                    if (GalleryActivity.galleryImagePathList.size() < 5){
+//                    if (GalleryActivity.galleryImagePathList.size() < 5){
                         holder.txtCheck.setBackgroundResource(R.drawable.shape_radius_ring);
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             holder.txtCheck.setBackgroundTintList(mContext.getResources().getColorStateList(R.color.colorPrimary));
                         }
                         GalleryActivity.galleryImagePathList.add(getImageInfo(itemArrayLists.get(position).getIdTest()));
                         holder.txtCheck.setText(""+ GalleryActivity.galleryImagePathList.size());
-                    }else{
-                        Toast.makeText(mContext, "사진은 첨부는 5장까지 가능합니다.", Toast.LENGTH_SHORT).show();
-                    }
+//                    }else{
+//                        Toast.makeText(mContext, "사진은 첨부는 5장까지 가능합니다.", Toast.LENGTH_SHORT).show();
+//                    }
                 }
             }
         });

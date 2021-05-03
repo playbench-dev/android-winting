@@ -41,7 +41,7 @@ public class NewRequestFragment extends Fragment implements AsyncResponse {
     private SwipeRefreshLayout      mSwipeRefresh;
     private ListView                mListView;
     private NewRequestAdapter       mAdapter;
-    private int                     PAGE_NUM = 1;
+    private int                     PAGE_NUM = 0;
     private int                     PAGE_SHOW_CNT = 15;
     private boolean                 mLastItemVisibleFlag = false;
     private boolean                 mLockListView = false;
@@ -71,7 +71,7 @@ public class NewRequestFragment extends Fragment implements AsyncResponse {
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                PAGE_NUM = 1;
+                PAGE_NUM = 0;
                 NetworkCall(ORDER_LIST);
                 mSwipeRefresh.setRefreshing(false);
             }
@@ -106,7 +106,7 @@ public class NewRequestFragment extends Fragment implements AsyncResponse {
         try {
             JSONObject jsonObject = new JSONObject(mResult);
             if (jsonObject.getString(ERROR_CD).equals(REQUEST_SUCCESS)){
-                if (PAGE_NUM == 1){
+                if (PAGE_NUM == 0){
                     mAdapter = new NewRequestAdapter(getActivity());
                 }
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);
@@ -124,7 +124,7 @@ public class NewRequestFragment extends Fragment implements AsyncResponse {
 
                         mAdapter.addItem(newRequestItem);
                     }
-                    if (PAGE_NUM == 1){
+                    if (PAGE_NUM == 0){
                         mListView.setAdapter(mAdapter);
                     }
                     mAdapter.notifyDataSetChanged();

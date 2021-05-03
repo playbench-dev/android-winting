@@ -34,7 +34,10 @@
                 android:layout_marginTop="13dp"
                 android:layout_marginBottom="13dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginLeft="8dp"/>
+                android:layout_marginLeft="8dp"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                android:theme="@style/MyBase.TimePicker"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

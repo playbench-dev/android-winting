@@ -1,5 +1,6 @@
 package com.playbench.winting.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.playbench.winting.Adapters.MyListAdapter;
 import com.playbench.winting.Adapters.NewRequestAdapter;
@@ -24,9 +27,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static android.app.Activity.RESULT_OK;
 import static com.playbench.winting.Utils.NetworkUtils.ANTECEDENTS_LIST;
 import static com.playbench.winting.Utils.NetworkUtils.ERROR_CD;
 import static com.playbench.winting.Utils.NetworkUtils.ERROR_NM;
+import static com.playbench.winting.Utils.NetworkUtils.FILM_LIST;
 import static com.playbench.winting.Utils.NetworkUtils.ORDER_LIST;
 import static com.playbench.winting.Utils.NetworkUtils.REQUEST_SUCCESS;
 import static com.playbench.winting.Utils.NetworkUtils.RESOURCES;
@@ -36,13 +41,15 @@ import static com.playbench.winting.Utils.Util.USER_NO;
 public class ListFragment extends Fragment implements AsyncResponse {
 
     private String                  TAG = "ListFragment";
+    private SwipeRefreshLayout      mSwipeRefresh;
     private ListView                mListView;
     private MyListAdapter           mAdapter;
     private MwSharedPreferences     mPref;
-    private int                     PAGE_NUM = 1;
+    private int                     PAGE_NUM = 0;
     private int                     PAGE_SHOW_CNT = 15;
     private boolean                 mLastItemVisibleFlag = false;
     private boolean                 mLockListView = false;
+    public static int               ESTIMATE_CODE = 1111;
 
     public ListFragment (){
 
@@ -60,7 +67,17 @@ public class ListFragment extends Fragment implements AsyncResponse {
         mPref                       = new MwSharedPreferences(getActivity());
 
         View v                      = inflater.inflate(R.layout.fragment_list, container, false);
+        mSwipeRefresh               = v.findViewById(R.id.swipe_my_list);
         mListView                   = v.findViewById(R.id.list_view_my_list);
+
+        mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                PAGE_NUM = 0;
+                NetworkCall(ANTECEDENTS_LIST);
+                mSwipeRefresh.setRefreshing(false);
+            }
+        });
 
         mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
@@ -93,8 +110,8 @@ public class ListFragment extends Fragment implements AsyncResponse {
         try {
             JSONObject jsonObject = new JSONObject(mResult);
             if (jsonObject.getString(ERROR_CD).equals(REQUEST_SUCCESS)){
-                if (PAGE_NUM == 1){
-                    mAdapter = new MyListAdapter(getActivity());
+                if (PAGE_NUM == 0){
+                    mAdapter = new MyListAdapter(getActivity(),this);
                 }
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);
                 if (mCode.equals(ANTECEDENTS_LIST)){
@@ -111,7 +128,7 @@ public class ListFragment extends Fragment implements AsyncResponse {
 
                         mAdapter.addItem(estimateItem);
                     }
-                    if (PAGE_NUM == 1){
+                    if (PAGE_NUM == 0){
                         mListView.setAdapter(mAdapter);
                     }
                     mAdapter.notifyDataSetChanged();
@@ -123,6 +140,17 @@ public class ListFragment extends Fragment implements AsyncResponse {
             }
         }catch (JSONException e){
 
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ESTIMATE_CODE){
+            if (resultCode == RESULT_OK){
+                PAGE_NUM = 0;
+                NetworkCall(ANTECEDENTS_LIST);
+            }
         }
     }
 }

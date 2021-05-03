@@ -4,13 +4,13 @@
     android:layout_height="wrap_content">
 
     <FrameLayout
-        android:layout_width="67dp"
-        android:layout_height="67dp">
+        android:layout_width="76dp"
+        android:layout_height="76dp">
 
         <ImageView
             android:id="@+id/img_select_gallery_list_item"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/stroke_no_radius"
             android:scaleType="fitXY"
             android:layout_gravity="bottom">

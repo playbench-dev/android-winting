@@ -13,23 +13,37 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.playbench.winting.Utils.Server;
+import com.playbench.winting.Utils.Util;
 import com.playbench.winting.views.GalleryManager;
 import com.playbench.winting.Adapters.GalleryAdapter;
 import com.playbench.winting.Itmes.GalleryItem;
 import com.playbench.winting.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
+
 import static com.playbench.winting.Utils.ImageResizeUtils.exifOrientationToDegrees;
+import static com.playbench.winting.Utils.NetworkUtils.ERROR_CD;
+import static com.playbench.winting.Utils.NetworkUtils.REQUEST_SUCCESS;
 import static com.playbench.winting.Utils.Util.FILE_PATH;
 import static com.playbench.winting.Utils.Util.PICK_URI;
 
@@ -194,59 +208,56 @@ public class GalleryActivity extends AppCompatActivity implements View.OnClickLi
 
     String response = "";
 
-//    public class UploadImgNetWork extends AsyncTask<String, String, String> {
-//
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//        }
-//
-//        @Override
-//        protected String doInBackground(String... strings) {
-//
-//            MultipartBody.Builder body;
-//
-//            body = (new MultipartBody.Builder());
-//
-//            body.setType(MultipartBody.FORM);
-//
-//            for (int i = bitmapArrayList.size() - 1; i >= 0; i--) {
-//                body.addFormDataPart("profileImage" + (bitmapArrayList.size() - i), "profileImage" + (bitmapArrayList.size() - i), RequestBody.create(MediaType.parse("image/*"), bitmapArrayList.get(i)));
-//            }
-//
-//            OkHttpClient client = new OkHttpClient();
-//            try {
-//                response = Utils.POST(client, Utils.Server.imageUpload(), body.build());
-//
-//                return response;
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            return null;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(String s) {
-//            try {
-//                JSONObject object = new JSONObject(s);
-//                if (object.get("result").equals("Y")) {
-//                    Intent intent = new Intent();
-//                    intent.putExtra("imagePathList", galleryImagePathList);
-//                    intent.putExtra("realUrl", String.valueOf(object.get("RealURL")));
-//                    setResult(RESULT_OK, intent);
-//                    txtDone.setEnabled(true);
-//                    imgFile.deleteOnExit();
-//                    onBackPressed();
-//                } else {
-//                    Toast.makeText(GalleryActivity.this, "파일 업로드 실패", Toast.LENGTH_SHORT).show();
-//                    imgFile.deleteOnExit();
-//                    onBackPressed();
-//                }
-//            } catch (JSONException e) {
-//
-//            }
-//        }
-//    }
+    public class UploadImgNetWork extends AsyncTask<String, String, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            MultipartBody.Builder body;
+
+            body = (new MultipartBody.Builder());
+
+            body.setType(MultipartBody.FORM);
+
+            body.addFormDataPart("orderNo",getIntent().getStringExtra("orderNo"));
+            body.addFormDataPart("fileSaveType",getIntent().getStringExtra("state"));
+            for (int i = bitmapArrayList.size() - 1; i >= 0; i--) {
+                body.addFormDataPart("Files", "files_name_"  + (bitmapArrayList.size() - i) + ".jpg", RequestBody.create(MediaType.parse("image/*"), bitmapArrayList.get(i)));
+            }
+
+            OkHttpClient client = new OkHttpClient();
+            try {
+                response = Util.POST(client, Server.EstimateImageUpdate(), body.build());
+                Log.i(TAG,"response : " + response);
+                return response;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            try {
+                JSONObject object = new JSONObject(s);
+                if (object.getString(ERROR_CD).equals(REQUEST_SUCCESS)) {
+                    setResult(RESULT_OK);
+                    onBackPressed();
+                } else {
+                    Toast.makeText(GalleryActivity.this, "파일 업로드 실패", Toast.LENGTH_SHORT).show();
+                    imgFile.deleteOnExit();
+                    onBackPressed();
+                }
+            } catch (JSONException e) {
+
+            }
+        }
+    }
 
     @Override
     public void onClick(View v) {
@@ -263,10 +274,9 @@ public class GalleryActivity extends AppCompatActivity implements View.OnClickLi
                     imgFile = new File(galleryImagePathList.get(i));
                     bitmapArrayList.add(imgFile);
                     if (i == galleryImagePathList.size() - 1) {
-//                        new UploadImgNetWork().execute();
+                        new UploadImgNetWork().execute();
                     }
                 }
-                onBackPressed();
                 break;
             }
         }

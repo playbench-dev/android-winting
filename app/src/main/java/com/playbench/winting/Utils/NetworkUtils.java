@@ -40,6 +40,7 @@ public class NetworkUtils {
     public static String WITHDRAWAL                     = "WITHDRAWAL";                 //회원탈퇴
     public static String ID_SEARCH                      = "ID_SEARCH";                  //아이디 찾기
     public static String PW_SEARCH                      = "PW_SEARCH";                  //비밀번호 찾기
+    public static String PW_CHANGE                      = "PW_CHANGE";                  //비밀번호 변경
     public static String COMPANY_SEARCH                 = "COMPANY_SEARCH";             //업체검색
     public static String ORDER_LIST                     = "ORDER_LIST";                 //견적 리스트
     public static String ORDER_DETAIL                   = "ORDER_DETAIL";               //견적 상세
@@ -55,6 +56,10 @@ public class NetworkUtils {
     public static String EDIT_USER                      = "EDIT_USER";                  //정보수정
     public static String ALARM_INFO                     = "ALARM_INFO";                 //알람정보
     public static String ALARM_SETTING                  = "ALARM_SETTING";              //알람수정
+    public static String ESTIMATE_IMAGE_CALL            = "ESTIMATE_IMAGE_CALL";        //이미지 호출
+    public static String ESTIMATE_IMAGE_DELETE          = "ESTIMATE_IMAGE_DELETE";      //이미지 삭제
+    public static String ESTIMATE_DETAIL                = "ESTIMATE_DETAIL";            //견적 산출 상세
+
 
     public static class NetworkCall extends AsyncTask<String, String, String> {
 
@@ -105,15 +110,12 @@ public class NetworkUtils {
                         .add("token",strings[2]);
             }else if (code.equals(ID_SEARCH)){
                 mUrl = Server.IdSearch();
-                body.add("name",strings[0])
-                        .add("phone",strings[1]);
+                body.add("user_name",strings[0])
+                        .add("phone_num",strings[1]);
             }else if (code.equals(PW_SEARCH)){
                 mUrl = Server.PwSearch();
-                body.add("user_no",strings[0])
-                        .add("phone",strings[1]);
-            }else if (code.equals(LOGOUT)){
-                mUrl = Server.Logout();
-                body.add("user_no",strings[0]);
+                body.add("user_id",strings[0])
+                        .add("phone_num",strings[1]);
             }else if (code.equals(WITHDRAWAL)){
                 mUrl = Server.Withdrawal();
                 body.add("user_no",strings[0]);
@@ -177,16 +179,22 @@ public class NetworkUtils {
                 body.add("estimate_no",strings[0]);
             }else if (code.equals(ANTECEDENTS_INSERT)){
                 mUrl = Server.AntecedentsInsert();
-                body.add("user_id",strings[0])
-                        .add("estimate_no",strings[1])
-                        .add("start_date",strings[2])
-                        .add("end_date",strings[3]);
+                body.add("user_id",strings[0]);
+                body.add("estimate_no",strings[1]);
+                if (strings[2].equals("0000-00-00")){
+                    strings[2] = "";
+                }else{
+                    body.add("start_date",strings[2]);
+                }
+                if (strings[3].equals("0000-00-00")){
+                    strings[3] = "";
+                }else{
+                    body.add("end_date",strings[3]);
+                }
+
             }else if (code.equals(ANTECEDENTS_DONE)){
                 mUrl = Server.AntecedentsDone();
-                body.add("user_id",strings[0])
-                        .add("estimate_no",strings[1])
-                        .add("start_date",strings[2])
-                        .add("end_date",strings[3]);
+                body.add("estimate_no",strings[0]);
             }else if (code.equals(EDIT_USER)){
                 mUrl = Server.EditUser();
                 body.add("user_no",strings[0])
@@ -200,6 +208,17 @@ public class NetworkUtils {
                 body.add("user_no",strings[0])
                         .add("new",strings[1])
                         .add("progress_state",strings[2]);
+            }else if (code.equals(ESTIMATE_IMAGE_CALL)){
+                mUrl = Server.EstimateImageCall();
+                body.add("order_no",strings[0]);
+            }else if (code.equals(ESTIMATE_IMAGE_DELETE)){
+                mUrl = Server.EstimateImageDelete();
+                body.add("orderNo",strings[0])
+                .add("fileSaveType",strings[1])
+                .add("filePath",strings[2]);
+            }else if (code.equals(ESTIMATE_DETAIL)){
+                mUrl = Server.EstimateDetail();
+                body.add("estimate_no",strings[0]);
             }
 
             OkHttpClient client = new OkHttpClient();

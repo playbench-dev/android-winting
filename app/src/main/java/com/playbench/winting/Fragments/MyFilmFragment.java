@@ -49,7 +49,7 @@ public class MyFilmFragment extends Fragment implements View.OnClickListener , A
     private SwipeRefreshLayout  mSwipeRefresh;
     private FilmListAdapter     mAdapter;
 
-    private int                 PAGE_NUM = 1;
+    private int                 PAGE_NUM = 0;
     private int                 PAGE_SHOW_CNT = 15;
     private boolean             mLastItemVisibleFlag = false;
     private boolean             mLockListView = false;
@@ -87,7 +87,7 @@ public class MyFilmFragment extends Fragment implements View.OnClickListener , A
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                PAGE_NUM = 1;
+                PAGE_NUM = 0;
                 NetworkCall(FILM_LIST);
                 mSwipeRefresh.setRefreshing(false);
             }
@@ -123,7 +123,7 @@ public class MyFilmFragment extends Fragment implements View.OnClickListener , A
             JSONObject jsonObject = new JSONObject(mResult);
             if (jsonObject.getString(ERROR_CD).equals(REQUEST_SUCCESS)){
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);
-                if (PAGE_NUM == 1){
+                if (PAGE_NUM == 0){
                     mAdapter = new FilmListAdapter(getActivity(),this);
                 }
                 if (mCode.equals(FILM_LIST)){
@@ -141,7 +141,7 @@ public class MyFilmFragment extends Fragment implements View.OnClickListener , A
 
                         mAdapter.addItem(myFilmItem);
                     }
-                    if (PAGE_NUM == 1){
+                    if (PAGE_NUM == 0){
                         mListView.setAdapter(mAdapter);
                     }
                     mAdapter.notifyDataSetChanged();
@@ -161,13 +161,13 @@ public class MyFilmFragment extends Fragment implements View.OnClickListener , A
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == FILM_INSERT){
             if (resultCode == RESULT_OK){
-                PAGE_NUM = 1;
+                PAGE_NUM = 0;
                 NetworkCall(FILM_LIST);
             }
         }else if (requestCode == FILM_EDIT){
             if (resultCode == RESULT_OK){
                 Log.i(TAG,"result ok22");
-                PAGE_NUM = 1;
+                PAGE_NUM = 0;
                 NetworkCall(FILM_LIST);
             }
         }

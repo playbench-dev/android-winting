@@ -187,7 +187,7 @@ public class EstimateSubmitActivity extends AppCompatActivity implements View.On
 //            mFilmJsonObject.accumulate("tser",TSER);
 //            mFilmJsonObject.accumulate("as_date",asDate);
             mFilmJsonObject.accumulate("hebe",hebe);
-            mFilmJsonObject.accumulate("price",price);
+            mFilmJsonObject.accumulate("price",price.replace(",",""));
 
             mFilmJsonArray.put(mFilmJsonObject);
         }catch (JSONException e){

@@ -161,6 +161,7 @@
     <string name="My_List_Detail_Image_Button_Text">사진 등록</string>
     <string name="My_List_Detail_Finish_Button_Text">완료 요청</string>
     <string name="My_List_Detail_Finish_Contents">완료신청 시\n해당 시공 관련 내용을\n더이상 수정하실 수 없습니다.\n완료신청을 하시겠습니까?</string>
+    <string name="My_List_Detail_Save_Contents">저장되었습니다.</string>
 
     <!--    ImageSaveActivity-->
     <string name="Image_Save_Title">사진등록</string>
@@ -212,6 +213,7 @@
     <string name="Pw_Change_New_Confirm_Pw_Hint_Complete_Text">새 비밀번호와 일치합니다.</string>
     <string name="Pw_Change_New_Confirm_Pw_Hint_Error_Text">새 비밀번호와 일치하지 않습니다.</string>
     <string name="Pw_Change_Button_Text">수정</string>
+    <string name="Pw_Change_Popup_Text">비밀번호가 변경되었습니다.</string>
 
 <!--AlarmSettingActivity-->
     <string name="Alarm_Setting_Title">알림설정</string>
@@ -224,4 +226,19 @@
 
     <!--    LicenseActivity-->
     <string name="License_Title">라이센스</string>
+
+<!--    IdSearchActivity-->
+    <string name="Id_Search_Title">아이디 찾기</string>
+    <string name="Id_Search_Name_Title">이름</string>
+    <string name="Id_Search_Name_Place_Holder">이름을 입력해주세요.</string>
+    <string name="Id_Search_Phone_Title">연락처</string>
+    <string name="Id_Search_Phone_Place_Holder">가입하신 연락처를 입력해주세요.</string>
+    <string name="Id_Search_Button_Text">확인</string>
+    <!--    PwSearchActivity-->
+    <string name="Pw_Search_Title">비밀번호 찾기</string>
+    <string name="Pw_Search_Id_Title">아이디</string>
+    <string name="Pw_Search_Id_Place_Holder">아이디를 입력해주세요.</string>
+    <string name="Pw_Search_Phone_Title">연락처</string>
+    <string name="Pw_Search_Phone_Place_Holder">가입하신 연락처를 입력해주세요.</string>
+    <string name="Pw_Search_Button_Text">확인</string>
 </resources>

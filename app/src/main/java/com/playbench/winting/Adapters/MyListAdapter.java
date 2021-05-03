@@ -9,21 +9,29 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.playbench.winting.Activitys.MyList.MyListDetailActivity;
 import com.playbench.winting.Itmes.EstimateItem;
 import com.playbench.winting.R;
 
 import java.util.ArrayList;
 
+import static com.playbench.winting.Fragments.ListFragment.ESTIMATE_CODE;
 import static com.playbench.winting.Utils.Util.EstimateProgress;
+import static com.playbench.winting.Utils.Util.GetFormatDEC;
+import static com.playbench.winting.Utils.Util.mCodeList;
+import static com.playbench.winting.Utils.Util.mNameList;
 
 public class MyListAdapter extends BaseAdapter {
 
     private Context mContext;
     private ArrayList<EstimateItem> mItemArrayList = new ArrayList<>();
+    private Fragment fragment;
 
-    public MyListAdapter(Context mContext) {
+    public MyListAdapter(Context mContext, Fragment fragment) {
         this.mContext           = mContext;
+        this.fragment           = fragment;
     }
 
     @Override
@@ -63,11 +71,35 @@ public class MyListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder)view.getTag();
         }
 
-        viewHolder.mTextRegion.setText(mItemArrayList.get(i).getRegion());
+        if (mItemArrayList.get(i).getRegion().length() > 2){
+            for (int x = 0; x < mCodeList.length; x++){
+                if (mCodeList[x].equals(mItemArrayList.get(i).getRegion().substring(0,2))){
+                    viewHolder.mTextRegion.setText(mNameList[x]);
+                }
+            }
+        }else{
+            for (int x = 0; x < mCodeList.length; x++){
+                if (mCodeList[x].equals(mItemArrayList.get(i).getRegion())){
+                    viewHolder.mTextRegion.setText(mNameList[x]);
+                }
+            }
+        }
+
         viewHolder.mTextProgress.setText(EstimateProgress(mItemArrayList.get(i).getProgress()));
-        viewHolder.mTextStartDate.setText(mItemArrayList.get(i).getStartDate().substring(0,10));
-        viewHolder.mTextEndDate.setText(mItemArrayList.get(i).getEndDate().substring(0,10));
-        viewHolder.mTextPrice.setText(mItemArrayList.get(i).getPrice());
+
+        if (mItemArrayList.get(i).getStartDate().length() > 10){
+            viewHolder.mTextStartDate.setText(mItemArrayList.get(i).getStartDate().substring(0,10));
+        }else{
+            viewHolder.mTextStartDate.setText(mItemArrayList.get(i).getStartDate());
+        }
+
+        if (mItemArrayList.get(i).getEndDate().length() > 10){
+            viewHolder.mTextEndDate.setText(mItemArrayList.get(i).getEndDate().substring(0,10));
+        }else{
+            viewHolder.mTextEndDate.setText(mItemArrayList.get(i).getEndDate());
+        }
+
+        viewHolder.mTextPrice.setText(GetFormatDEC(mItemArrayList.get(i).getPrice()));
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +107,8 @@ public class MyListAdapter extends BaseAdapter {
                 Intent intent = new Intent(mContext, MyListDetailActivity.class);
                 intent.putExtra("estimateNo",mItemArrayList.get(i).getEstimateNo());
                 intent.putExtra("orderNo",mItemArrayList.get(i).getOrderNo());
-                mContext.startActivity(intent);
+                intent.putExtra("progress",mItemArrayList.get(i).getProgress());
+                fragment.startActivityForResult(intent,ESTIMATE_CODE);
             }
         });
 

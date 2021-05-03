@@ -16,6 +16,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.bumptech.glide.Glide;
 import com.playbench.winting.Itmes.GalleryItem;
 import com.playbench.winting.R;
+import com.playbench.winting.Utils.Server;
 import com.playbench.winting.views.ImagePinch;
 
 import java.util.ArrayList;
@@ -34,10 +35,14 @@ public class ImgDetailViewPagerAdapter extends PagerAdapter {
         this.galleryItems = galleryItems;
     }
 
+    public ImgDetailViewPagerAdapter(Context context) {
+        this.context = context;
+    }
+
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return galleryItems.size();
+        return listViewItems.size();
     }
 
     @Override
@@ -69,7 +74,7 @@ public class ImgDetailViewPagerAdapter extends PagerAdapter {
         ImageView img = (ImageView) view.findViewById(R.id.img_view_pager);
         Display display = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 
-        Glide.with(context).asBitmap().load(getImageInfo(galleryItems.get(position).getIdTest())).override(display.getWidth(), display.getHeight()).into(img);
+        Glide.with(context).asBitmap().load(Server.serverUrl+listViewItems.get(position)).override(display.getWidth(), display.getHeight()).into(img);
 
         container.addView(view);
         return view;
@@ -97,25 +102,4 @@ public class ImgDetailViewPagerAdapter extends PagerAdapter {
     public void addItem(String imagePath) {
         listViewItems.add(imagePath);
     }
-
-
-    private String getImageInfo(String thumbID) {
-        String imageDataPath = null;
-        String[] proj = {MediaStore.Images.Media._ID,
-                MediaStore.Images.Media.DATA,
-                MediaStore.Images.Media.DISPLAY_NAME,
-                MediaStore.Images.Media.SIZE};
-        Cursor imageCursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, proj, "_ID='" + thumbID + "'", null, null);
-
-        if (imageCursor != null && imageCursor.moveToFirst()) {
-            if (imageCursor.getCount() > 0) {
-                int imgData = imageCursor.getColumnIndex(MediaStore.Images.Media.DATA);
-
-                imageDataPath = imageCursor.getString(imgData);
-            }
-        }
-        imageCursor.close();
-        return imageDataPath;
-    }
-
 }

@@ -210,18 +210,4 @@
         </LinearLayout>
     </ScrollView>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_image_save_finish"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/shape_radius_8dp"
-        android:text="@string/Image_Save_Button_Text"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:fontFamily="@font/notosanscjkkr_bold"
-        android:includeFontPadding="false"
-        android:layout_marginBottom="20dp"/>
-
 </LinearLayout>

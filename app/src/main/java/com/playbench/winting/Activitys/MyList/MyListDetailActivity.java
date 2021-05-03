@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.playbench.winting.Activitys.Estimate.EstimateDetailActivity;
+import com.playbench.winting.Activitys.Estimate.EstimateInsertActivity;
 import com.playbench.winting.R;
 import com.playbench.winting.Utils.DatePickerDialogActivity;
 import com.playbench.winting.Utils.MwSharedPreferences;
@@ -19,7 +20,6 @@ import com.playbench.winting.Utils.NetworkUtils;
 import com.playbench.winting.Utils.OneButtonDialog;
 import com.playbench.winting.Utils.ServerManagement.AsyncResponse;
 import com.playbench.winting.Utils.TwoButtonDialog;
-import com.playbench.winting.Utils.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +33,6 @@ import static com.playbench.winting.Utils.NetworkUtils.ANTECEDENTS_DONE;
 import static com.playbench.winting.Utils.NetworkUtils.ANTECEDENTS_INSERT;
 import static com.playbench.winting.Utils.NetworkUtils.ERROR_CD;
 import static com.playbench.winting.Utils.NetworkUtils.ERROR_NM;
-import static com.playbench.winting.Utils.NetworkUtils.ORDER_DETAIL;
 import static com.playbench.winting.Utils.NetworkUtils.REQUEST_SUCCESS;
 import static com.playbench.winting.Utils.NetworkUtils.RESOURCES;
 import static com.playbench.winting.Utils.Util.GetFormatDEC;
@@ -51,6 +50,13 @@ public class MyListDetailActivity extends AppCompatActivity implements View.OnCl
     private Button                  mButtonImageSave;
     private Button                  mButtonFinish;
     private MwSharedPreferences     mPref;
+
+    private String                  mAddress = "";
+    private String                  mForm = "";
+    private String                  mDueDate = "";
+    private String                  mPurpose = "";
+    private String                  mDescription = "";
+    private String                  mAfterSize = "";
 
     private SimpleDateFormat        simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
 
@@ -75,6 +81,15 @@ public class MyListDetailActivity extends AppCompatActivity implements View.OnCl
         mButtonImageSave            = findViewById(R.id.btn_my_list_detail_img_save);
         mButtonFinish               = findViewById(R.id.btn_my_list_detail_finish);
 
+        mButtonFinish.setEnabled(false);
+
+        if (Integer.parseInt(getIntent().getStringExtra("progress")) >= 3){
+            mButtonFinish.setVisibility(View.GONE);
+            mButtonImageSave.setText("사진 보기");
+            mTextStartDt.setEnabled(false);
+            mTextEndDt.setEnabled(false);
+        }
+
         mImageBack.setOnClickListener(this);
         mTextStartDt.setOnClickListener(this);
         mTextEndDt.setOnClickListener(this);
@@ -91,7 +106,7 @@ public class MyListDetailActivity extends AppCompatActivity implements View.OnCl
             new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(mPref.getStringValue(USER_ID),getIntent().getStringExtra("estimateNo")
                     ,mTextStartDt.getText().toString() + " " + simpleDateFormat.format(new Date(System.currentTimeMillis())),mTextEndDt.getText().toString() + " " + simpleDateFormat.format(new Date(System.currentTimeMillis())));
         }else if (mCode.equals(ANTECEDENTS_DONE)){
-
+            new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(getIntent().getStringExtra("estimateNo"));
         }
     }
 
@@ -102,13 +117,39 @@ public class MyListDetailActivity extends AppCompatActivity implements View.OnCl
             if (jsonObject.getString(ERROR_CD).equals(REQUEST_SUCCESS)) {
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);
                 if (mCode.equals(ANTECEDENTS_DETAIL)) {
-                    mTextStartDt.setText(jsonArray.getJSONObject(0).getString("start_date").substring(0,10));
-                    mTextEndDt.setText(jsonArray.getJSONObject(0).getString("end_date").substring(0,10));
+
+                    if (jsonArray.getJSONObject(0).getString("start_date").length() > 10){
+                        mTextStartDt.setText(jsonArray.getJSONObject(0).getString("start_date").substring(0,10));
+                    }else{
+                        mTextStartDt.setText("");
+                    }
+
+                    if (jsonArray.getJSONObject(0).getString("end_date").length() > 10){
+                        mTextEndDt.setText(jsonArray.getJSONObject(0).getString("end_date").substring(0,10));
+                    }else{
+                        mTextEndDt.setText("");
+                    }
+
+                    if (jsonArray.getJSONObject(0).getString("start_date").length() > 10 && jsonArray.getJSONObject(0).getString("end_date").length() > 10){
+                        if (!jsonArray.getJSONObject(0).getString("start_date").substring(0,10).equals("0000-00-00") &&
+                                !jsonArray.getJSONObject(0).getString("end_date").substring(0,10).equals("0000-00-00")){
+                            mButtonFinish.setEnabled(true);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                mButtonFinish.setBackgroundTintList(getResources().getColorStateList(R.color.colorPrimary));
+                            }
+                            mButtonFinish.setTextColor(getResources().getColor(R.color.white));
+                        }
+                    }
+
                     mTextPrice.setText(GetFormatDEC(JsonIsNullCheck(jsonArray.getJSONObject(0),"price")));
+
                 }else if (mCode.equals(ANTECEDENTS_INSERT)){
-
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    new OneButtonDialog(getString(R.string.My_List_Detail_Title),getString(R.string.My_List_Detail_Save_Contents),null).show(fragmentManager,TAG);
+                    setResult(RESULT_OK);
                 }else if (mCode.equals(ANTECEDENTS_DONE)){
-
+                    setResult(RESULT_OK);
+                    onBackPressed();
                 }
             }else{
                 FragmentManager fragmentManager = getSupportFragmentManager();
@@ -148,7 +189,7 @@ public class MyListDetailActivity extends AppCompatActivity implements View.OnCl
                             NetworkCall(ANTECEDENTS_INSERT);
                         }
                     }
-                }).show(fragmentManager, "test");
+                }).show(fragmentManager, TAG);
                 break;
             }
             case R.id.txt_my_list_detail_end_dt : {
@@ -177,14 +218,17 @@ public class MyListDetailActivity extends AppCompatActivity implements View.OnCl
                 break;
             }
             case R.id.btn_my_list_detail_estimate_move : {
-                Intent intent = new Intent(this, EstimateDetailActivity.class);
+                Intent intent = new Intent(this, EstimateInsertActivity.class);
                 intent.putExtra("flag",1);
                 intent.putExtra("orderNo",getIntent().getStringExtra("orderNo"));
+                intent.putExtra("estimateNo",getIntent().getStringExtra("estimateNo"));
                 startActivity(intent);
                 break;
             }
             case R.id.btn_my_list_detail_img_save : {
                 Intent intent = new Intent(this, ImageSaveActivity.class);
+                intent.putExtra("orderNo",getIntent().getStringExtra("orderNo"));
+                intent.putExtra("progress",getIntent().getStringExtra("progress"));
                 startActivity(intent);
                 break;
             }
@@ -193,7 +237,7 @@ public class MyListDetailActivity extends AppCompatActivity implements View.OnCl
                 new TwoButtonDialog(getString(R.string.My_List_Detail_Title), getString(R.string.My_List_Detail_Finish_Contents), new TwoButtonDialog.ConfirmButtonListener() {
                     @Override
                     public void confirmButton(View v) {
-
+                        NetworkCall(ANTECEDENTS_DONE);
                     }
                 }).show(fragmentManager,TAG);
                 break;

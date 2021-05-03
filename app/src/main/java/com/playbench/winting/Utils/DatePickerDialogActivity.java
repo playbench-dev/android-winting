@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
@@ -58,6 +59,8 @@ public class DatePickerDialogActivity extends DialogFragment {
         datePicker = (DatePicker) dialog.findViewById(R.id.date_picker);
         cancelButton = (Button) dialog.findViewById(R.id.btn_date_picker_cancel);
         confirmButton = (Button) dialog.findViewById(R.id.btn_date_picker_done);
+
+        datePicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 
         WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
 

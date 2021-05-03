@@ -285,19 +285,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
             case R.id.txt_agree_move_service : {
                 Intent i = new Intent(this,AgreeActivity.class);
-                i.putExtra("agreeFirst",1);
+                i.putExtra("flag",1);
                 startActivity(i);
                 break;
             }
             case R.id.txt_agree_move_personal : {
                 Intent i = new Intent(this,AgreeActivity.class);
-                i.putExtra("agreeFirst",2);
+                i.putExtra("flag",2);
                 startActivity(i);
                 break;
             }
             case R.id.txt_agree_move_sensitivity : {
                 Intent i = new Intent(this,AgreeActivity.class);
-                i.putExtra("agreeFirst",3);
+                i.putExtra("flag",3);
                 startActivity(i);
                 break;
             }

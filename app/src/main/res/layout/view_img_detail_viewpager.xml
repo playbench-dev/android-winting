@@ -9,18 +9,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="80dp"
+        android:weightSum="360">
+
+        <ImageView
+            android:id="@+id/img_img_delete"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:src="@drawable/ic_delete"
+            android:tint="@color/white"
+            android:paddingLeft="16dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="260"/>
 
         <TextView
             android:id="@+id/txt_img_detail"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="60"
             android:textColor="@color/white"
             android:text="Done"
             android:textSize="18dp"
             android:gravity="center_vertical|right"
-            android:paddingRight="20dp"/>
+            android:paddingRight="12dp"/>
     </LinearLayout>
 
     <com.playbench.winting.views.CustomViewPager

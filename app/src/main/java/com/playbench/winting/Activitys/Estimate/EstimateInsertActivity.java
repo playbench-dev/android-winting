@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 import static com.playbench.winting.Utils.NetworkUtils.ERROR_CD;
 import static com.playbench.winting.Utils.NetworkUtils.ERROR_NM;
+import static com.playbench.winting.Utils.NetworkUtils.ESTIMATE_DETAIL;
 import static com.playbench.winting.Utils.NetworkUtils.ESTIMATE_INSERT;
 import static com.playbench.winting.Utils.NetworkUtils.ORDER_DETAIL;
 import static com.playbench.winting.Utils.NetworkUtils.REQUEST_SUCCESS;
@@ -63,20 +64,26 @@ public class EstimateInsertActivity extends AppCompatActivity implements View.On
 
         FindViewById();
 
-        mTextAddress.setText(beforeIntent.getStringExtra("address"));
-        mTextDueDate.setText(DueDate(beforeIntent.getStringExtra("dueDate")));
-        mTextForm.setText(FormType(beforeIntent.getStringExtra("form")));
+        if (beforeIntent.hasExtra("address")){
+            mTextAddress.setText(beforeIntent.getStringExtra("address"));
+            mTextDueDate.setText(DueDate(beforeIntent.getStringExtra("dueDate")));
+            mTextForm.setText(FormType(beforeIntent.getStringExtra("form")));
 
-        Log.i(TAG,"filmList : " + beforeIntent.getStringExtra("filmJson"));
+            Log.i(TAG,"filmList : " + beforeIntent.getStringExtra("filmJson"));
 
-        try {
-            JSONArray jsonArray = new JSONArray(beforeIntent.getStringExtra("filmJson"));
-            for (int i = 0; i < jsonArray.length(); i++){
-                FilmList(jsonArray.getJSONObject(i).getString("film_name"),jsonArray.getJSONObject(i).getString("hebe"),jsonArray.getJSONObject(i).getString("price"));
+            try {
+                JSONArray jsonArray = new JSONArray(beforeIntent.getStringExtra("filmJson"));
+                for (int i = 0; i < jsonArray.length(); i++){
+                    FilmList(jsonArray.getJSONObject(i).getString("film_name"),jsonArray.getJSONObject(i).getString("hebe"),jsonArray.getJSONObject(i).getString("price"));
+                }
+            }catch (JSONException e){
+
             }
-        }catch (JSONException e){
-
+        }else{
+            mButtonFinish.setVisibility(View.GONE);
+            NetworkCall(ESTIMATE_DETAIL);
         }
+
     }
 
     void FindViewById(){
@@ -103,7 +110,7 @@ public class EstimateInsertActivity extends AppCompatActivity implements View.On
 
         mTextFilm.setText(filmName);
         mTextSquareMeter.setText(squareMeter);
-        mTextPrice.setText(price);
+        mTextPrice.setText(GetFormatDEC(price));
 
         mTotalPrice += Integer.parseInt(price.replace(",",""));
 
@@ -114,6 +121,8 @@ public class EstimateInsertActivity extends AppCompatActivity implements View.On
         if (mCode.equals(ESTIMATE_INSERT)){
             new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(mPref.getStringValue(USER_NO),getIntent().getStringExtra("orderNo"),
                     beforeIntent.getStringExtra("filmJson"));
+        }else if (mCode.equals(ESTIMATE_DETAIL)){
+            new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(beforeIntent.getStringExtra("estimateNo"));
         }
     }
 
@@ -134,6 +143,19 @@ public class EstimateInsertActivity extends AppCompatActivity implements View.On
                             onBackPressed();
                         }
                     }).show(fragmentManager,TAG);
+                }else if (mCode.equals(ESTIMATE_DETAIL)){
+                    mTextAddress.setText(JsonIsNullCheck(jsonArray.getJSONObject(0),"address") + JsonIsNullCheck(jsonArray.getJSONObject(0),"address_detail"));
+                    mTextDueDate.setText(DueDate(JsonIsNullCheck(jsonArray.getJSONObject(0),"due_date")));
+                    mTextForm.setText(FormType(JsonIsNullCheck(jsonArray.getJSONObject(0),"form")));
+
+                    try {
+                        JSONArray jsonArrayFilm = new JSONArray(JsonIsNullCheck(jsonArray.getJSONObject(0),"estimate_info"));
+                        for (int i = 0; i < jsonArrayFilm.length(); i++){
+                            FilmList(jsonArrayFilm.getJSONObject(i).getString("film_name"),jsonArrayFilm.getJSONObject(i).getString("hebe"),jsonArrayFilm.getJSONObject(i).getString("price"));
+                        }
+                    }catch (JSONException e){
+
+                    }
                 }
             }else{
                 FragmentManager fragmentManager = getSupportFragmentManager();

@@ -105,9 +105,10 @@ public class FilmSelectDialog extends Dialog implements View.OnClickListener {
         for (int i = 0; i < myFilmItemArrayList.size(); i++) {
             myFilmList[i] = myFilmItemArrayList.get(i).getFilmName();
         }
-
+        mPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
         mPicker.setMaxValue(myFilmList.length - 1);
         mPicker.setDisplayedValues(myFilmList);
+        mPicker.setWrapSelectorWheel(false);
 
         mButtonCancel.setOnClickListener(this);
         mButtonDone.setOnClickListener(this);

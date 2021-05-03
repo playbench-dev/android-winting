@@ -16,6 +16,8 @@ import com.playbench.winting.R;
 import java.util.ArrayList;
 
 import static com.playbench.winting.Utils.Util.DueDate;
+import static com.playbench.winting.Utils.Util.mCodeList;
+import static com.playbench.winting.Utils.Util.mNameList;
 
 public class NewRequestAdapter extends BaseAdapter {
 
@@ -62,7 +64,20 @@ public class NewRequestAdapter extends BaseAdapter {
             viewHolder = (ViewHolder)view.getTag();
         }
 
-        viewHolder.mTextRegion.setText(mItemArrayList.get(i).getmRegion());
+        if (mItemArrayList.get(i).getmRegion().length() > 2){
+            for (int x = 0; x < mCodeList.length; x++){
+                if (mCodeList[x].equals(mItemArrayList.get(i).getmRegion().substring(0,2))){
+                    viewHolder.mTextRegion.setText(mNameList[x]);
+                }
+            }
+        }else{
+            for (int x = 0; x < mCodeList.length; x++){
+                if (mCodeList[x].equals(mItemArrayList.get(i).getmRegion())){
+                    viewHolder.mTextRegion.setText(mNameList[x]);
+                }
+            }
+        }
+
         viewHolder.mTextProgress.setText(mItemArrayList.get(i).getmProgress());
         viewHolder.mTextDueDate.setText(DueDate(mItemArrayList.get(i).getmDueDate()));
         viewHolder.mTextRegDate.setText(mItemArrayList.get(i).getmRegDate().substring(0,10));

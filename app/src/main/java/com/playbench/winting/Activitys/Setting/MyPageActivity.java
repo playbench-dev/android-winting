@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.playbench.winting.Activitys.Login.LoginActivity;
 import com.playbench.winting.Activitys.Login.RegionSearchActivity;
 import com.playbench.winting.R;
 import com.playbench.winting.Utils.MwSharedPreferences;
@@ -37,6 +38,7 @@ import static com.playbench.winting.Utils.NetworkUtils.REQUEST_SUCCESS;
 import static com.playbench.winting.Utils.NetworkUtils.RESOURCES;
 import static com.playbench.winting.Utils.NetworkUtils.WITHDRAWAL;
 import static com.playbench.winting.Utils.Util.COMPANY_NAME;
+import static com.playbench.winting.Utils.Util.LOGIN_FLAG;
 import static com.playbench.winting.Utils.Util.PHONE_NUM;
 import static com.playbench.winting.Utils.Util.REGION;
 import static com.playbench.winting.Utils.Util.USER_ID;
@@ -121,10 +123,12 @@ public class MyPageActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     void NetworkCall(String mCode){
-        if (mCode.equals(LOGOUT) || mCode.equals(WITHDRAWAL)){
-            new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute();
+        if (mCode.equals(WITHDRAWAL)){
+            new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(mPref.getStringValue(USER_NO));
         }else if (mCode.equals(EDIT_USER)){
             new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(mPref.getStringValue(USER_NO),mPref.getStringValue(USER_PW),SELECT_REGION);
+        }else if (mCode.equals(LOGIN)){
+            new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(mPref.getStringValue(USER_ID),mPref.getStringValue(USER_PW),"-");
         }
     }
 
@@ -134,10 +138,20 @@ public class MyPageActivity extends AppCompatActivity implements View.OnClickLis
             JSONObject jsonObject = new JSONObject(mResult);
             if (jsonObject.getString(ERROR_CD).equals(REQUEST_SUCCESS)){
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);
-                if (mCode.equals(LOGOUT)){
-
+                if (mCode.equals(LOGIN)){
+                    mPref.remove(USER_ID);
+                    mPref.remove(USER_PW);
+                    mPref.remove(LOGIN_FLAG);
+                    Intent i = new Intent(this, LoginActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
                 }else if (mCode.equals(WITHDRAWAL)){
-
+                    mPref.remove(USER_ID);
+                    mPref.remove(USER_PW);
+                    mPref.remove(LOGIN_FLAG);
+                    Intent i = new Intent(this, LoginActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
                 }else if (mCode.equals(EDIT_USER)){
                     mPref.setValue(REGION,SELECT_REGION);
                     FragmentManager fragmentManager = getSupportFragmentManager();
@@ -206,7 +220,7 @@ public class MyPageActivity extends AppCompatActivity implements View.OnClickLis
                 new TwoButtonDialog(getString(R.string.Dialog_Logout_Title), getString(R.string.Dialog_Logout_Contents), new TwoButtonDialog.ConfirmButtonListener() {
                     @Override
                     public void confirmButton(View v) {
-                        NetworkCall(LOGOUT);
+                        NetworkCall(LOGIN);
                     }
                 }).show(fragmentManager, TAG);
                 break;

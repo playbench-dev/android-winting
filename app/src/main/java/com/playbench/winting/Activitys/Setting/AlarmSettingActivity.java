@@ -97,7 +97,7 @@ public class AlarmSettingActivity extends AppCompatActivity implements CompoundB
         if (mCode.equals(ALARM_INFO)){
             new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(mPref.getStringValue(USER_NO));
         }else if (mCode.equals(ALARM_SETTING)){
-            new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(mPref.getStringValue(USER_NO),mSwitchNew.isChecked() == true ? "1" : "2",mSwitchProgress.isChecked() == true ? "1" : "2");
+            new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(mPref.getStringValue(USER_NO),mSwitchNew.isChecked() == true ? "1" : "0",mSwitchProgress.isChecked() == true ? "1" : "0");
         }
     }
 
@@ -108,7 +108,16 @@ public class AlarmSettingActivity extends AppCompatActivity implements CompoundB
             if (jsonObject.getString(ERROR_CD).equals(REQUEST_SUCCESS)){
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);
                 if (mCode.equals(ALARM_INFO)){
-
+                    if (jsonArray.getJSONObject(0).getInt("new") == 1){
+                        mSwitchNew.setChecked(true);
+                    }else{
+                        mSwitchNew.setChecked(false);
+                    }
+                    if (jsonArray.getJSONObject(0).getInt("progress_state") == 1){
+                        mSwitchProgress.setChecked(true);
+                    }else{
+                        mSwitchProgress.setChecked(false);
+                    }
                 }else if (mCode.equals(ALARM_SETTING)){
 
                 }

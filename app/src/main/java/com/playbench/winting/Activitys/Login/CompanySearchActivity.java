@@ -45,7 +45,7 @@ public class CompanySearchActivity extends AppCompatActivity implements View.OnC
     private TextView                mTextClose;
     private ListView                mListView;
     private CompanyListAdapter      mCompanyAdapter;
-    private int                     PAGE_NUM = 1;
+    private int                     PAGE_NUM = 0;
     private int                     PAGE_SHOW_CNT = 15;
     private boolean                 mLastItemVisibleFlag = false;
     private boolean                 mLockListView = false;
@@ -94,7 +94,7 @@ public class CompanySearchActivity extends AppCompatActivity implements View.OnC
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                PAGE_NUM = 1;
+                PAGE_NUM = 0;
                 mSearchText = charSequence.toString();
                 NetworkCall(COMPANY_SEARCH);
             }
@@ -133,7 +133,7 @@ public class CompanySearchActivity extends AppCompatActivity implements View.OnC
             if (jsonObject.getString(ERROR_CD).equals(REQUEST_SUCCESS)){
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);
                 if (mCode.equals(COMPANY_SEARCH)){
-                    if (PAGE_NUM == 1){
+                    if (PAGE_NUM == 0){
                         mCompanyAdapter = new CompanyListAdapter(this);
                     }
                     for (int i = 0; i < jsonArray.length(); i++){
@@ -146,7 +146,7 @@ public class CompanySearchActivity extends AppCompatActivity implements View.OnC
 
                         mCompanyAdapter.addItem(companyListItem);
                     }
-                    if (PAGE_NUM == 1){
+                    if (PAGE_NUM == 0){
                         mListView.setAdapter(mCompanyAdapter);
                     }
                     mLockListView = true;

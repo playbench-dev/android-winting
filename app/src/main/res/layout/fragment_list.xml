@@ -84,10 +84,16 @@
         android:layout_height="8dp"
         android:background="@color/colorRGB250"/>
 
-    <ListView
-        android:id="@+id/list_view_my_list"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_my_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@color/colorRGB250"
-        android:dividerHeight="8dp"/>
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/list_view_my_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/colorRGB250"
+            android:dividerHeight="8dp"/>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </LinearLayout>

@@ -20,23 +20,18 @@ public class Server {
         return str;
     }
 
-    public static String Logout(){
-        String str = serverUrl + "";
-        return str;
-    }
-
     public static String Withdrawal(){
-        String str = serverUrl + "";
+        String str = serverUrl + "company/withdrawal";
         return str;
     }
 
     public static String IdSearch(){
-        String str = serverUrl + "";
+        String str = serverUrl + "company/id-search";
         return str;
     }
 
     public static String PwSearch(){
-        String str = serverUrl + "";
+        String str = serverUrl + "company/pw-search";
         return str;
     }
 
@@ -114,4 +109,25 @@ public class Server {
         String str = serverUrl + "company/alarm-setting";
         return str;
     }
+
+    public static String EstimateImageCall(){
+        String str = serverUrl + "company/construction-image-call";
+        return str;
+    }
+
+    public static String EstimateImageUpdate(){
+        String str = serverUrl + "company/construction-image-update";
+        return str;
+    }
+
+    public static String EstimateImageDelete(){
+        String str = serverUrl + "company/construction-image-delete";
+        return str;
+    }
+
+    public static String EstimateDetail(){
+        String str = serverUrl + "company/estimate-detail";
+        return str;
+    }
+
 }
