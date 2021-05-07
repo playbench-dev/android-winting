@@ -109,7 +109,7 @@ public class ImageSaveActivity extends AppCompatActivity implements View.OnClick
         mLinearCurrent.setOnClickListener(this);
         mLinearAfter.setOnClickListener(this);
 
-        if (Integer.parseInt(getIntent().getStringExtra("progress")) >= 3){
+        if (Integer.parseInt(getIntent().getStringExtra("progress")) >= 3 || Integer.parseInt(getIntent().getStringExtra("progress")) == 1){
             mLinearBefore.setEnabled(false);
             mLinearCurrent.setEnabled(false);
             mLinearAfter.setEnabled(false);
@@ -253,6 +253,8 @@ public class ImageSaveActivity extends AppCompatActivity implements View.OnClick
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mState = state;
+                mFilePath = imagePath;
                 ViewPagerPopUp(Integer.parseInt(idx),state,imagePath);
             }
         });
@@ -281,7 +283,7 @@ public class ImageSaveActivity extends AppCompatActivity implements View.OnClick
     }
 
     void ViewPagerPopUp(int idx, String state, String imagePath){
-        EstimateViewPagerAdpater adapter = new EstimateViewPagerAdpater(this);
+        EstimateViewPagerAdpater adapter = new EstimateViewPagerAdpater(this,3);
         final BottomSheetDialog dialog = new BottomSheetDialog(ImageSaveActivity.this);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.view_img_detail_viewpager, null);
@@ -290,7 +292,7 @@ public class ImageSaveActivity extends AppCompatActivity implements View.OnClick
         TextView txtClose = (TextView) contentView.findViewById(R.id.txt_img_detail);
         ImageView imgDelete = (ImageView)contentView.findViewById(R.id.img_img_delete);
 
-        if (Integer.parseInt(getIntent().getStringExtra("progress")) >= 3){
+        if (Integer.parseInt(getIntent().getStringExtra("progress")) >= 3 || Integer.parseInt(getIntent().getStringExtra("progress")) == 1){
             imgDelete.setVisibility(View.GONE);
         }
 
@@ -300,19 +302,37 @@ public class ImageSaveActivity extends AppCompatActivity implements View.OnClick
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 500);
         dialog.addContentView(contentView, params);
 
+        String file = "";
+
         if (state.equals("before")){
             for (int i = 0; i < mListBefore.size(); i++){
                 adapter.addItem(mListBefore.get(i));
+                if (i == 0){
+                    file += "" + mListBefore.get(i);
+                }else{
+                    file += "," + mListBefore.get(i);
+                }
             }
         }else if (state.equals("proceed")){
             for (int i = 0; i < mListCurrent.size(); i++){
                 adapter.addItem(mListCurrent.get(i));
+                if (i == 0){
+                    file += "" + mListCurrent.get(i);
+                }else{
+                    file += "," + mListCurrent.get(i);
+                }
             }
         }else{
             for (int i = 0; i < mListAfter.size(); i++){
                 adapter.addItem(mListAfter.get(i));
+                if (i == 0){
+                    file += "" + mListAfter.get(i);
+                }else{
+                    file += "," + mListAfter.get(i);
+                }
             }
         }
+        adapter.addPath(file);
 
         viewPagerDetail.setAdapter(adapter);
         viewPagerDetail.setCurrentItem(idx);

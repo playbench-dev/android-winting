@@ -18,7 +18,7 @@
             android:layout_weight="1"
             android:textSize="10dp"
             android:gravity="center"
-            android:text="@string/Estimate_Detail_Vertical_Text"
+            android:text=""
             android:textColor="@color/colorTextColor"/>
 
         <com.playbench.winting.views.RegularTextView
@@ -28,7 +28,7 @@
             android:layout_weight="1"
             android:textSize="10dp"
             android:gravity="center"
-            android:text="@string/Estimate_Detail_Horizontal_Text"
+            android:text=""
             android:textColor="@color/colorTextColor"/>
 
         <com.playbench.winting.views.RegularTextView
@@ -38,7 +38,7 @@
             android:layout_weight="1"
             android:textSize="10dp"
             android:gravity="center"
-            android:text="@string/Estimate_Detail_Paper_Cnt_Text"
+            android:text=""
             android:textColor="@color/colorTextColor"/>
 
         <com.playbench.winting.views.RegularTextView
@@ -48,7 +48,7 @@
             android:layout_weight="1"
             android:textSize="10dp"
             android:gravity="center"
-            android:text="@string/Estimate_Detail_Square_Meter_Text"
+            android:text=""
             android:textColor="@color/colorTextColor"/>
     </LinearLayout>
 </LinearLayout>

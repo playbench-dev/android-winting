@@ -60,7 +60,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:hint="@string/Register_Id_PlaceHolder"
-                    android:textSize="20dp"
                     android:inputType="text"
                     android:textColorHint="@color/colorPlaceHolder"
                     android:textColor="@color/colorTextColor"/>
@@ -91,7 +90,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:hint="@string/Register_Pw_PlaceHolder"
-                    android:textSize="20dp"
                     android:inputType="textPassword"
                     android:textColorHint="@color/colorPlaceHolder"
                     android:textColor="@color/colorTextColor"/>
@@ -124,7 +122,6 @@
                     android:layout_marginTop="6dp"
                     android:inputType="textPassword"
                     android:hint="@string/Register_Pw_Confirm_PlaceHolder"
-                    android:textSize="20dp"
                     android:textColorHint="@color/colorPlaceHolder"
                     android:textColor="@color/colorTextColor"/>
 
@@ -154,7 +151,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:hint="@string/Register_Company_PlaceHolder"
-                    android:textSize="20dp"
                     android:focusable="false"
                     android:textColorHint="@color/colorPlaceHolder"
                     android:textColor="@color/colorTextColor"/>
@@ -178,7 +174,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:hint="@string/Register_Name_PlaceHolder"
-                    android:textSize="20dp"
                     android:inputType="text"
                     android:textColorHint="@color/colorPlaceHolder"
                     android:textColor="@color/colorTextColor"/>
@@ -202,7 +197,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:hint="@string/Register_Contact_PlaceHolder"
-                    android:textSize="20dp"
                     android:inputType="phone"
                     android:textColorHint="@color/colorPlaceHolder"
                     android:textColor="@color/colorTextColor"/>
@@ -227,7 +221,6 @@
                     android:layout_marginTop="6dp"
                     android:hint="@string/Register_Region_PlaceHolder"
                     android:focusable="false"
-                    android:textSize="20dp"
                     android:textColorHint="@color/colorPlaceHolder"
                     android:textColor="@color/colorTextColor"/>
 

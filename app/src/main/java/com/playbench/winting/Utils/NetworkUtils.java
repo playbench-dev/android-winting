@@ -212,6 +212,7 @@ public class NetworkUtils {
                 mUrl = Server.EstimateImageCall();
                 body.add("order_no",strings[0]);
             }else if (code.equals(ESTIMATE_IMAGE_DELETE)){
+                Log.i(TAG,"string : " + strings[1] + " string : " + strings[2]);
                 mUrl = Server.EstimateImageDelete();
                 body.add("orderNo",strings[0])
                 .add("fileSaveType",strings[1])

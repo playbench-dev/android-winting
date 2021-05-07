@@ -1,5 +1,6 @@
 package com.playbench.winting.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -59,6 +60,7 @@ public class MyFilmFragment extends Fragment implements View.OnClickListener , A
     public static int           FILM_DELETE = 1113;
 
     private MwSharedPreferences mPref;
+    private ProgressDialog      mProgressDialog;
 
     public MyFilmFragment (){
 
@@ -79,6 +81,8 @@ public class MyFilmFragment extends Fragment implements View.OnClickListener , A
         mImageInsert            = v.findViewById(R.id.img_my_film_insert);
         mListView               = v.findViewById(R.id.list_my_film);
         mSwipeRefresh           = v.findViewById(R.id.swipe_my_film);
+        mProgressDialog         = new ProgressDialog(getActivity(),R.style.MyTheme);
+        mProgressDialog.setCancelable(false);
 
         NetworkCall(FILM_LIST);
 
@@ -112,6 +116,7 @@ public class MyFilmFragment extends Fragment implements View.OnClickListener , A
     }
 
     void NetworkCall(String mCode){
+        mProgressDialog.show();
         if (mCode.equals(FILM_LIST)){
             new NetworkUtils.NetworkCall(getActivity(),this,TAG,mCode).execute(mPref.getStringValue(USER_NO),""+PAGE_NUM,""+PAGE_SHOW_CNT);
         }
@@ -120,6 +125,7 @@ public class MyFilmFragment extends Fragment implements View.OnClickListener , A
     @Override
     public void ProcessFinish(String mCode, String mResult) {
         try {
+            mProgressDialog.dismiss();
             JSONObject jsonObject = new JSONObject(mResult);
             if (jsonObject.getString(ERROR_CD).equals(REQUEST_SUCCESS)){
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);
@@ -181,6 +187,22 @@ public class MyFilmFragment extends Fragment implements View.OnClickListener , A
                 startActivityForResult(intent,FILM_INSERT);
                 break;
             }
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mProgressDialog.isShowing()){
+            mProgressDialog.dismiss();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mProgressDialog.isShowing()){
+            mProgressDialog.dismiss();
         }
     }
 }

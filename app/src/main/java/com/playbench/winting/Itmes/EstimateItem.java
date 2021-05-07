@@ -14,6 +14,24 @@ public class EstimateItem {
     String startDate;
     String endDate;
     String price;
+    String address;
+    String visitImage;
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getVisitImage() {
+        return visitImage;
+    }
+
+    public void setVisitImage(String visitImage) {
+        this.visitImage = visitImage;
+    }
 
     public String getEstimateNo() {
         return estimateNo;

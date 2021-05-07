@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,6 +58,7 @@ public class EstimateDetailActivity extends AppCompatActivity implements View.On
     private LinearLayout            mLinearSheetPaperVisible;
     private Button                  mButtonMove;
     private EstimateViewPagerAdpater mAdapter;
+    private ProgressDialog          mProgressDialog;
 
     //info
     private String                  mOrdeNo = "";
@@ -76,7 +78,9 @@ public class EstimateDetailActivity extends AppCompatActivity implements View.On
 
         FindViewById();
 
-        mAdapter = new EstimateViewPagerAdpater(this);
+        mAdapter                    = new EstimateViewPagerAdpater(this,2);
+        mProgressDialog             = new ProgressDialog(this,R.style.MyTheme);
+        mProgressDialog.setCancelable(false);
 
         NetworkCall(ORDER_DETAIL);
     }
@@ -121,8 +125,9 @@ public class EstimateDetailActivity extends AppCompatActivity implements View.On
         mTextVertical.setText("" + vertical);
         mTextHorizontal.setText("" + horizontal);
         mTextPaperCnt.setText("" + paperCnt);
-        double squareMeter = ((vertical * 10) * (horizontal * 10) / 1000000);
-        mTextSquareMeter.setText("" + Math.round(squareMeter));
+        double squareMeter =  ((double)vertical * (double)horizontal * paperCnt) / 1000000;
+
+        mTextSquareMeter.setText("" + squareMeter);
 
         if (flag == 1){
             mLinearInsulationParent.addView(listView);
@@ -147,6 +152,7 @@ public class EstimateDetailActivity extends AppCompatActivity implements View.On
     }
 
     void NetworkCall(String mCode){
+        mProgressDialog.show();
         if (mCode.equals(ORDER_DETAIL)){
             new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(getIntent().getStringExtra("orderNo"));
         }
@@ -155,6 +161,7 @@ public class EstimateDetailActivity extends AppCompatActivity implements View.On
     @Override
     public void ProcessFinish(String mCode, String mResult) {
         try {
+            mProgressDialog.dismiss();
             JSONObject jsonObject = new JSONObject(mResult);
             if (jsonObject.getString(ERROR_CD).equals(REQUEST_SUCCESS)){
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);
@@ -168,20 +175,41 @@ public class EstimateDetailActivity extends AppCompatActivity implements View.On
                     mOrdeNo = object.getString("order_no");
                     mOrdeCode = object.getString("order_code");
 
+                    String file = "";
                     if (object.has("visit_image")){
-                        jsonArrayVisit = object.getJSONArray("visit_image");
-                        for (int i = 0; i < jsonArrayVisit.length(); i++){
-                            mAdapter.addItem(jsonArrayVisit.getString(i));
+                        if (object.isNull("visit_image")){
+                            mAdapter.addItem("");
+                        }else{
+                            jsonArrayVisit = object.getJSONArray("visit_image");
+                            mTextPagerTotalCnt.setText(" / " + jsonArrayVisit.length());
+                            for (int i = 0; i < jsonArrayVisit.length(); i++){
+                                if (i == 0){
+                                    file += "" + jsonArrayVisit.getString(i);
+                                }else{
+                                    file += "," + jsonArrayVisit.getString(i);
+                                }
+                                mAdapter.addItem(jsonArrayVisit.getString(i));
+                            }
                         }
+                        mAdapter.addPath(file);
                         mViewPager.setAdapter(mAdapter);
-                        mTextPagerTotalCnt.setText(" / "+mViewPager.getChildCount());
                     }else{
                         mTextPagerCnt.setText("0");
                         mTextPagerTotalCnt.setText(" / 0");
                     }
                     if (object.has("purpose")){
+                        String purpose = "";
+
                         jsonArrayPurpose = object.getJSONArray("purpose");
-                        mTextPurpose.setText(JsonIsNullCheck(jsonArrayPurpose.getJSONObject(0),"text"));
+                        for (int i = 0; i < jsonArrayPurpose.length(); i++){
+                            if (i == jsonArrayPurpose.length() - 1){
+                                purpose += " - " + JsonIsNullCheck(jsonArrayPurpose.getJSONObject(i),"text");
+                            }else{
+                                purpose += " - " + JsonIsNullCheck(jsonArrayPurpose.getJSONObject(i),"text") + "\n";
+                            }
+
+                        }
+                        mTextPurpose.setText(purpose);
                     }
                     if (object.has("after_size")){
                         jsonArrayAfterSize = object.getJSONArray("after_size");
@@ -232,6 +260,22 @@ public class EstimateDetailActivity extends AppCompatActivity implements View.On
                 startActivity(intent);
                 break;
             }
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mProgressDialog.isShowing()){
+            mProgressDialog.dismiss();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mProgressDialog.isShowing()){
+            mProgressDialog.dismiss();
         }
     }
 }

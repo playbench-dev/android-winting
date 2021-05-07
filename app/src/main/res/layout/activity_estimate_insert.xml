@@ -56,7 +56,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
                 android:textColor="@color/colorTextColor"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="12dp"
                 android:text="@string/Estimate_Insert_Info_Address"/>
 
             <com.playbench.winting.views.RegularTextView
@@ -65,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:textColor="@color/colorTextColor"
-                android:layout_marginTop="6dp"/>
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="12dp"/>
 
             <com.playbench.winting.views.MediumTextView
                 android:layout_width="match_parent"
@@ -73,6 +75,7 @@
                 android:textSize="12dp"
                 android:textColor="@color/colorTextColor"
                 android:layout_marginTop="12dp"
+                android:layout_marginLeft="12dp"
                 android:text="@string/Estimate_Insert_Info_Due_Date"/>
 
             <com.playbench.winting.views.RegularTextView
@@ -81,7 +84,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:textColor="@color/colorTextColor"
-                android:layout_marginTop="6dp"/>
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="12dp"/>
 
             <com.playbench.winting.views.MediumTextView
                 android:layout_width="match_parent"
@@ -89,6 +93,7 @@
                 android:textSize="12dp"
                 android:textColor="@color/colorTextColor"
                 android:layout_marginTop="12dp"
+                android:layout_marginLeft="12dp"
                 android:text="@string/Estimate_Insert_Info_Form"/>
 
             <com.playbench.winting.views.RegularTextView
@@ -97,7 +102,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:textColor="@color/colorTextColor"
-                android:layout_marginTop="6dp"/>
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="12dp"/>
 
             <com.playbench.winting.views.BoldTextView
                 android:layout_width="match_parent"
@@ -105,14 +111,14 @@
                 android:textColor="@color/colorTextColor"
                 android:textSize="20dp"
                 android:text="@string/Estimate_Insert_Film_Info_Title"
-                android:layout_marginTop="28dp"/>
+                android:layout_marginTop="28dp" />
 
             <LinearLayout
                 android:id="@+id/lin_estimate_insert_film_list_parent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="12dp"></LinearLayout>
+                android:layout_marginLeft="12dp"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

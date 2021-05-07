@@ -1,17 +1,23 @@
 package com.playbench.winting.Fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.playbench.winting.Adapters.NewRequestAdapter;
+import com.playbench.winting.Adapters.TestAdapter;
 import com.playbench.winting.Itmes.NewRequestItem;
 import com.playbench.winting.R;
 import com.playbench.winting.Utils.MwSharedPreferences;
@@ -39,13 +45,14 @@ public class NewRequestFragment extends Fragment implements AsyncResponse {
 
     private String                  TAG = "NewRequestFragment";
     private SwipeRefreshLayout      mSwipeRefresh;
-    private ListView                mListView;
-    private NewRequestAdapter       mAdapter;
+    private RecyclerView mListView;
+    private TestAdapter mAdapter;
     private int                     PAGE_NUM = 0;
     private int                     PAGE_SHOW_CNT = 15;
     private boolean                 mLastItemVisibleFlag = false;
     private boolean                 mLockListView = false;
     private MwSharedPreferences     mPref;
+    private ProgressDialog          mProgressDialog;
 
     public NewRequestFragment (){
 
@@ -65,8 +72,13 @@ public class NewRequestFragment extends Fragment implements AsyncResponse {
         mListView                   = v.findViewById(R.id.list_view_new_request);
 
         mPref                       = new MwSharedPreferences(getActivity());
+        mProgressDialog             = new ProgressDialog(getActivity(),R.style.MyTheme);
+        mProgressDialog.setCancelable(false);
 
         NetworkCall(ORDER_LIST);
+
+        mListView.setHasFixedSize(true);
+        mListView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -77,25 +89,39 @@ public class NewRequestFragment extends Fragment implements AsyncResponse {
             }
         });
 
-        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+        mListView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
             @Override
-            public void onScrollStateChanged(AbsListView absListView, int i) {
-                if (i == AbsListView.OnScrollListener.SCROLL_STATE_IDLE && mLastItemVisibleFlag && mLockListView == false) {
+            public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+                int lastVisibleItemPosition = ((LinearLayoutManager)mListView.getLayoutManager()).findLastVisibleItemPosition();
+                int itemTotalCnt = mListView.getAdapter().getItemCount();
+
+                if (lastVisibleItemPosition == (itemTotalCnt - 1) && mLockListView) {
                     PAGE_NUM++;
                     NetworkCall(ORDER_LIST);
                 }
             }
-
-            @Override
-            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                mLastItemVisibleFlag = (totalItemCount > 0) && (firstVisibleItem + visibleItemCount >= totalItemCount);
-            }
         });
+
+//        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(AbsListView absListView, int i) {
+//                if (i == AbsListView.OnScrollListener.SCROLL_STATE_IDLE && mLastItemVisibleFlag && mLockListView == false) {
+//                    PAGE_NUM++;
+//                    NetworkCall(ORDER_LIST);
+//                }
+//            }
+//
+//            @Override
+//            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+//                mLastItemVisibleFlag = (totalItemCount > 0) && (firstVisibleItem + visibleItemCount >= totalItemCount);
+//            }
+//        });
 
         return v;
     }
 
     void NetworkCall(String mCode){
+        mProgressDialog.show();
         if (mCode.equals(ORDER_LIST)){
             new NetworkUtils.NetworkCall(getActivity(),this,TAG,mCode).execute(mPref.getStringValue(USER_NO),""+PAGE_NUM,""+PAGE_SHOW_CNT,mPref.getStringValue(REGION));
         }
@@ -104,24 +130,46 @@ public class NewRequestFragment extends Fragment implements AsyncResponse {
     @Override
     public void ProcessFinish(String mCode, String mResult) {
         try {
+            mProgressDialog.dismiss();
             JSONObject jsonObject = new JSONObject(mResult);
             if (jsonObject.getString(ERROR_CD).equals(REQUEST_SUCCESS)){
                 if (PAGE_NUM == 0){
-                    mAdapter = new NewRequestAdapter(getActivity());
+                    mAdapter = new TestAdapter(getActivity());
                 }
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);
                 if (mCode.equals(ORDER_LIST)){
+                    JSONArray jsonArrayVisit = null;
                     for (int i = 0; i < jsonArray.length(); i++){
+                        JSONObject object = jsonArray.getJSONObject(i);
                         NewRequestItem newRequestItem = new NewRequestItem();
-                        newRequestItem.setmOrderNo(JsonIsNullCheck(jsonArray.getJSONObject(i),"order_no"));
-                        newRequestItem.setmOrderCode(JsonIsNullCheck(jsonArray.getJSONObject(i),"order_code"));
-                        newRequestItem.setmRegion(JsonIsNullCheck(jsonArray.getJSONObject(i),"region"));
+                        newRequestItem.setmOrderNo(JsonIsNullCheck(object,"order_no"));
+                        newRequestItem.setmOrderCode(JsonIsNullCheck(object,"order_code"));
+                        newRequestItem.setmRegion(JsonIsNullCheck(object,"region"));
                         newRequestItem.setmProgress("모집");
-                        newRequestItem.setmDueDate(JsonIsNullCheck(jsonArray.getJSONObject(i),"due_date"));
-                        newRequestItem.setmRegDate(JsonIsNullCheck(jsonArray.getJSONObject(i),"reg_date"));
-                        newRequestItem.setmForm(JsonIsNullCheck(jsonArray.getJSONObject(i),"form"));
-                        newRequestItem.setmAfterSize(JsonIsNullCheck(jsonArray.getJSONObject(i),"after_size"));
+                        newRequestItem.setmDueDate(JsonIsNullCheck(object,"due_date"));
+                        newRequestItem.setmRegDate(JsonIsNullCheck(object,"reg_date"));
+                        newRequestItem.setmForm(JsonIsNullCheck(object,"form"));
+                        newRequestItem.setmAfterSize(JsonIsNullCheck(object,"after_size"));
+                        newRequestItem.setmAddress(JsonIsNullCheck(object,"address"));
 
+                        String filePath = "";
+                        if (object.has("visit_image")){
+                            if (object.isNull("visit_image")){
+                                newRequestItem.setmVisitImage("");
+                            }else{
+                                jsonArrayVisit = object.getJSONArray("visit_image");
+                                for (int j = 0; j < jsonArrayVisit.length(); j++){
+                                    if (j == 0){
+                                        filePath += "" + jsonArrayVisit.get(j).toString();
+                                    }else{
+                                        filePath += "," + jsonArrayVisit.get(j).toString();
+                                    }
+                                }
+                                newRequestItem.setmVisitImage(filePath);
+                            }
+                        }else{
+                            newRequestItem.setmVisitImage("");
+                        }
                         mAdapter.addItem(newRequestItem);
                     }
                     if (PAGE_NUM == 0){
@@ -136,6 +184,22 @@ public class NewRequestFragment extends Fragment implements AsyncResponse {
             }
         }catch (JSONException e){
 
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mProgressDialog.isShowing()){
+            mProgressDialog.dismiss();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mProgressDialog.isShowing()){
+            mProgressDialog.dismiss();
         }
     }
 }

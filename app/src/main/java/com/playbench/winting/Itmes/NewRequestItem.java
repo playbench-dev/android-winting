@@ -14,6 +14,24 @@ public class NewRequestItem {
     String mRegDate;
     String mForm;
     String mAfterSize;
+    String mVisitImage;
+    String mAddress;
+
+    public String getmAddress() {
+        return mAddress;
+    }
+
+    public void setmAddress(String mAddress) {
+        this.mAddress = mAddress;
+    }
+
+    public String getmVisitImage() {
+        return mVisitImage;
+    }
+
+    public void setmVisitImage(String mVisitImage) {
+        this.mVisitImage = mVisitImage;
+    }
 
     public String getmAfterSize() {
         return mAfterSize;

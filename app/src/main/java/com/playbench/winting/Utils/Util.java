@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -114,6 +115,8 @@ public class Util {
             str = "2개월 이후";
         }else if (dueDate.equals("99")){
             str = "기타";
+        }else{
+            str = dueDate.replace("99/","");
         }
         return str;
     }
@@ -121,7 +124,7 @@ public class Util {
     public static String EstimateProgress(String dueDate){
         String str = "";
         if (dueDate.equals("1")){
-            str = "진헹중";
+            str = "진행 대기";
         }else if (dueDate.equals("2")){
             str = "진행중";
         }else if (dueDate.equals("3")){
@@ -150,5 +153,20 @@ public class Util {
             str = "기타";
         }
         return str;
+    }
+
+    public static String MakeMoneyType(String dblMoneyString)
+    {
+        String moneyString = dblMoneyString;
+
+        String format = "#,##0.00";
+        DecimalFormat df = new DecimalFormat(format);
+        DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+
+        dfs.setGroupingSeparator(',');// 구분자를 ,로
+        df.setGroupingSize(3);//3자리 단위마다 구분자처리 한다.
+        df.setDecimalFormatSymbols(dfs);
+
+        return (df.format(Double.parseDouble(moneyString))).toString();
     }
 }

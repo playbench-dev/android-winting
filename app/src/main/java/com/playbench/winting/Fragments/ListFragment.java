@@ -1,7 +1,9 @@
 package com.playbench.winting.Fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +13,13 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.playbench.winting.Adapters.MyListAdapter;
 import com.playbench.winting.Adapters.NewRequestAdapter;
+import com.playbench.winting.Adapters.Test2Adapter;
 import com.playbench.winting.Itmes.EstimateItem;
 import com.playbench.winting.Itmes.NewRequestItem;
 import com.playbench.winting.R;
@@ -42,14 +47,15 @@ public class ListFragment extends Fragment implements AsyncResponse {
 
     private String                  TAG = "ListFragment";
     private SwipeRefreshLayout      mSwipeRefresh;
-    private ListView                mListView;
-    private MyListAdapter           mAdapter;
+    private RecyclerView mListView;
+    private Test2Adapter mAdapter;
     private MwSharedPreferences     mPref;
     private int                     PAGE_NUM = 0;
     private int                     PAGE_SHOW_CNT = 15;
     private boolean                 mLastItemVisibleFlag = false;
     private boolean                 mLockListView = false;
     public static int               ESTIMATE_CODE = 1111;
+    private ProgressDialog          mProgressDialog;
 
     public ListFragment (){
 
@@ -69,6 +75,11 @@ public class ListFragment extends Fragment implements AsyncResponse {
         View v                      = inflater.inflate(R.layout.fragment_list, container, false);
         mSwipeRefresh               = v.findViewById(R.id.swipe_my_list);
         mListView                   = v.findViewById(R.id.list_view_my_list);
+        mProgressDialog             = new ProgressDialog(getActivity(),R.style.MyTheme);
+        mProgressDialog.setCancelable(false);
+
+        mListView.setHasFixedSize(true);
+        mListView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -79,20 +90,22 @@ public class ListFragment extends Fragment implements AsyncResponse {
             }
         });
 
-        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView absListView, int i) {
-                if (i == AbsListView.OnScrollListener.SCROLL_STATE_IDLE && mLastItemVisibleFlag && mLockListView == false) {
-                    PAGE_NUM++;
-                    NetworkCall(ANTECEDENTS_LIST);
-                }
-            }
 
-            @Override
-            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                mLastItemVisibleFlag = (totalItemCount > 0) && (firstVisibleItem + visibleItemCount >= totalItemCount);
-            }
-        });
+
+//        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(AbsListView absListView, int i) {
+//                if (i == AbsListView.OnScrollListener.SCROLL_STATE_IDLE && mLastItemVisibleFlag && mLockListView == false) {
+//                    PAGE_NUM++;
+//                    NetworkCall(ANTECEDENTS_LIST);
+//                }
+//            }
+//
+//            @Override
+//            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+//                mLastItemVisibleFlag = (totalItemCount > 0) && (firstVisibleItem + visibleItemCount >= totalItemCount);
+//            }
+//        });
 
         NetworkCall(ANTECEDENTS_LIST);
 
@@ -100,6 +113,7 @@ public class ListFragment extends Fragment implements AsyncResponse {
     }
 
     void NetworkCall(String mCode){
+        mProgressDialog.show();
         if (mCode.equals(ANTECEDENTS_LIST)){
             new NetworkUtils.NetworkCall(getActivity(),this,TAG,mCode).execute(mPref.getStringValue(USER_NO),""+PAGE_NUM,""+PAGE_SHOW_CNT);
         }
@@ -108,23 +122,47 @@ public class ListFragment extends Fragment implements AsyncResponse {
     @Override
     public void ProcessFinish(String mCode, String mResult) {
         try {
+            mProgressDialog.dismiss();
             JSONObject jsonObject = new JSONObject(mResult);
             if (jsonObject.getString(ERROR_CD).equals(REQUEST_SUCCESS)){
                 if (PAGE_NUM == 0){
-                    mAdapter = new MyListAdapter(getActivity(),this);
+                    mAdapter = new Test2Adapter(getActivity(),this);
                 }
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);
                 if (mCode.equals(ANTECEDENTS_LIST)){
+                    JSONArray jsonArrayVisit = null;
                     for (int i = 0; i < jsonArray.length(); i++){
+                        JSONObject object = jsonArray.getJSONObject(i);
                         EstimateItem estimateItem = new EstimateItem();
-                        estimateItem.setEstimateNo(JsonIsNullCheck(jsonArray.getJSONObject(i),"estimate_no"));
-                        estimateItem.setEstimateCode(JsonIsNullCheck(jsonArray.getJSONObject(i),"estimate_code"));
-                        estimateItem.setOrderNo(JsonIsNullCheck(jsonArray.getJSONObject(i),"order_no"));
-                        estimateItem.setRegion(JsonIsNullCheck(jsonArray.getJSONObject(i),"region"));
-                        estimateItem.setProgress(JsonIsNullCheck(jsonArray.getJSONObject(i),"progress"));
-                        estimateItem.setStartDate(JsonIsNullCheck(jsonArray.getJSONObject(i),"start_date"));
-                        estimateItem.setEndDate(JsonIsNullCheck(jsonArray.getJSONObject(i),"end_date"));
-                        estimateItem.setPrice(JsonIsNullCheck(jsonArray.getJSONObject(i),"price"));
+                        estimateItem.setEstimateNo(JsonIsNullCheck(object,"estimate_no"));
+                        estimateItem.setEstimateCode(JsonIsNullCheck(object,"estimate_code"));
+                        estimateItem.setOrderNo(JsonIsNullCheck(object,"order_no"));
+                        estimateItem.setRegion(JsonIsNullCheck(object,"region"));
+                        estimateItem.setProgress(JsonIsNullCheck(object,"progress"));
+                        estimateItem.setStartDate(JsonIsNullCheck(object,"start_date"));
+                        estimateItem.setEndDate(JsonIsNullCheck(object,"end_date"));
+                        estimateItem.setPrice(JsonIsNullCheck(object,"price"));
+                        estimateItem.setAddress(JsonIsNullCheck(object,"address"));
+
+                        String filePath = "";
+                        if (object.has("visit_image")){
+                            if (object.isNull("visit_image")){
+                                estimateItem.setVisitImage("");
+                            }else{
+                                jsonArrayVisit = object.getJSONArray("visit_image");
+                                for (int j = 0; j < jsonArrayVisit.length(); j++){
+                                    if (j == 0){
+                                        filePath += "" + jsonArrayVisit.get(j).toString();
+                                    }else{
+                                        filePath += "," + jsonArrayVisit.get(j).toString();
+                                    }
+                                }
+                                Log.i(TAG,"visit : " + filePath);
+                                estimateItem.setVisitImage(filePath);
+                            }
+                        }else{
+                            estimateItem.setVisitImage("");
+                        }
 
                         mAdapter.addItem(estimateItem);
                     }
@@ -151,6 +189,22 @@ public class ListFragment extends Fragment implements AsyncResponse {
                 PAGE_NUM = 0;
                 NetworkCall(ANTECEDENTS_LIST);
             }
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (mProgressDialog.isShowing()){
+            mProgressDialog.dismiss();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mProgressDialog.isShowing()){
+            mProgressDialog.dismiss();
         }
     }
 }

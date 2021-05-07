@@ -3,6 +3,7 @@ package com.playbench.winting.Activitys.Estimate;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,14 +54,18 @@ public class EstimateInsertActivity extends AppCompatActivity implements View.On
     private int                     mTotalPrice = 0;
     private Intent                  beforeIntent;
     private MwSharedPreferences     mPref;
+    private ProgressDialog          mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_estimate_insert);
 
-        beforeIntent = getIntent();
-        mPref = new MwSharedPreferences(this);
+        beforeIntent                = getIntent();
+
+        mPref                       = new MwSharedPreferences(this);
+        mProgressDialog             = new ProgressDialog(this,R.style.MyTheme);
+        mProgressDialog.setCancelable(false);
 
         FindViewById();
 
@@ -118,6 +123,7 @@ public class EstimateInsertActivity extends AppCompatActivity implements View.On
     }
 
     void NetworkCall(String mCode){
+        mProgressDialog.show();
         if (mCode.equals(ESTIMATE_INSERT)){
             new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(mPref.getStringValue(USER_NO),getIntent().getStringExtra("orderNo"),
                     beforeIntent.getStringExtra("filmJson"));
@@ -129,6 +135,7 @@ public class EstimateInsertActivity extends AppCompatActivity implements View.On
     @Override
     public void ProcessFinish(String mCode, String mResult) {
         try {
+            mProgressDialog.dismiss();
             JSONObject jsonObject = new JSONObject(mResult);
             if (jsonObject.getString(ERROR_CD).equals(REQUEST_SUCCESS)){
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);

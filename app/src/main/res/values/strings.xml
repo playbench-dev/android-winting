@@ -26,9 +26,9 @@
     <string name="Login_Sign_Up_Text"><u>회원가입</u></string>
     <string name="Agree_Popup_Title">약관동의</string>
     <string name="Agree_Popup_All_Select">약관 전체 동의</string>
-    <string name="Agree_Popup_First_Title">약관명</string>
-    <string name="Agree_Popup_Second_Title">약관명</string>
-    <string name="Agree_Popup_Third_Title">약관명</string>
+    <string name="Agree_Popup_First_Title">서비스 이용 및 회원 가입 약관</string>
+    <string name="Agree_Popup_Second_Title">개인정보 수집 및 이용에 대한 안내</string>
+    <string name="Agree_Popup_Third_Title">개인정보 제 3자 제공에 관한 사항</string>
     <string name="Agree_Popup_Detail_Text">상세보기</string>
     <string name="Agree_Popup_Button_Text">동의</string>
 
@@ -106,6 +106,8 @@
     <string name="Estimate_Submit_Square_Meter_Text_Place_Holder">헤베를 입력하세요.</string>
     <string name="Estimate_Submit_Price_Place_Holder">금액을 입력하세요.</string>
     <string name="Estimate_Submit_Button">다음</string>
+    <string name="Estimate_Submit_No_Film_Contents">현재 등록된 필름이없습니다.\n필름을 등록해주세요.</string>
+    <string name="Estimate_Submit_No_Film_Select">필름을 선택해주세요.</string>
 
     <!--    EstimateInsertActivity-->
     <string name="Estimate_Insert_Title">견적 미리보기</string>

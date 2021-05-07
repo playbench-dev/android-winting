@@ -114,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mFragmentList = new ListFragment();
                     mFragmentManager.beginTransaction().add(R.id.frame_layout, mFragmentList).commit();
                 }
+
                 if(mFragmentNewRequest != null) mFragmentManager.beginTransaction().hide(mFragmentNewRequest).commit();
                 if(mFragmentList != null) mFragmentManager.beginTransaction().show(mFragmentList).commit();
                 if(mFragmentMyFilm != null) mFragmentManager.beginTransaction().hide(mFragmentMyFilm).commit();

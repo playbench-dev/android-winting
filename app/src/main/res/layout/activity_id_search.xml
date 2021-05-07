@@ -60,7 +60,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:hint="@string/Id_Search_Name_Place_Holder"
-                    android:textSize="20dp"
                     android:inputType="text"
                     android:textColorHint="@color/colorPlaceHolder"
                     android:textColor="@color/colorTextColor"/>
@@ -84,7 +83,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:hint="@string/Id_Search_Phone_Place_Holder"
-                    android:textSize="20dp"
                     android:inputType="text"
                     android:textColorHint="@color/colorPlaceHolder"
                     android:textColor="@color/colorTextColor"/>

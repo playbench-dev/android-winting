@@ -27,12 +27,12 @@ public class ImgDetailViewPagerAdapter extends PagerAdapter {
 
     Context context;
     ArrayList<String> listViewItems = new ArrayList<>();
-    List<GalleryItem> galleryItems;
+    String mFilePath;
     int flag = 0;
 
-    public ImgDetailViewPagerAdapter(Context context, List<GalleryItem> galleryItems) {
+    public ImgDetailViewPagerAdapter(Context context, String mFilePath) {
         this.context = context;
-        this.galleryItems = galleryItems;
+        this.mFilePath = mFilePath;
     }
 
     public ImgDetailViewPagerAdapter(Context context) {

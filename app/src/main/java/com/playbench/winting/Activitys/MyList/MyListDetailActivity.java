@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -83,7 +84,7 @@ public class MyListDetailActivity extends AppCompatActivity implements View.OnCl
 
         mButtonFinish.setEnabled(false);
 
-        if (Integer.parseInt(getIntent().getStringExtra("progress")) >= 3){
+        if (Integer.parseInt(getIntent().getStringExtra("progress")) >= 3 || Integer.parseInt(getIntent().getStringExtra("progress")) == 1){
             mButtonFinish.setVisibility(View.GONE);
             mButtonImageSave.setText("사진 보기");
             mTextStartDt.setEnabled(false);
@@ -219,6 +220,7 @@ public class MyListDetailActivity extends AppCompatActivity implements View.OnCl
             }
             case R.id.btn_my_list_detail_estimate_move : {
                 Intent intent = new Intent(this, EstimateInsertActivity.class);
+                Log.i(TAG,"estimateNo : " + getIntent().getStringExtra("estimateNo"));
                 intent.putExtra("flag",1);
                 intent.putExtra("orderNo",getIntent().getStringExtra("orderNo"));
                 intent.putExtra("estimateNo",getIntent().getStringExtra("estimateNo"));
