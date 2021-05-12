@@ -133,7 +133,8 @@ public class NetworkUtils {
                 Log.i(TAG,"region : " + strings[3]);
             }else if (code.equals(ORDER_DETAIL)){
                 mUrl = Server.OrderDetail();
-                body.add("order_no",strings[0]);
+                body.add("user_no",strings[0])
+                .add("order_no",strings[1]);
             }else if (code.equals(ESTIMATE_INSERT)){
                 mUrl = Server.EstimateInsert();
                 body.add("user_no",strings[0])

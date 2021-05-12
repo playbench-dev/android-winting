@@ -40,6 +40,8 @@
                 android:hint="@string/Company_Search_PlaceHolder"
                 android:fontFamily="@font/notosanscjkkr_medium_regular"
                 android:includeFontPadding="false"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
                 android:textSize="17dp"
                 android:textColorHint="@color/colorPlaceHolder"
                 android:textColor="@color/colorTextColor"/>

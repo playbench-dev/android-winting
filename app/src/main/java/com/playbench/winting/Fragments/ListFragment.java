@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -40,6 +41,7 @@ import static com.playbench.winting.Utils.NetworkUtils.FILM_LIST;
 import static com.playbench.winting.Utils.NetworkUtils.ORDER_LIST;
 import static com.playbench.winting.Utils.NetworkUtils.REQUEST_SUCCESS;
 import static com.playbench.winting.Utils.NetworkUtils.RESOURCES;
+import static com.playbench.winting.Utils.Util.JsonIntIsNullCheck;
 import static com.playbench.winting.Utils.Util.JsonIsNullCheck;
 import static com.playbench.winting.Utils.Util.USER_NO;
 
@@ -54,6 +56,8 @@ public class ListFragment extends Fragment implements AsyncResponse {
     private int                     PAGE_SHOW_CNT = 15;
     private boolean                 mLastItemVisibleFlag = false;
     private boolean                 mLockListView = false;
+    private int                     LIST_TOTAL_CNT = 0;
+    private int                     CURRENT_CNT = 0;
     public static int               ESTIMATE_CODE = 1111;
     private ProgressDialog          mProgressDialog;
 
@@ -85,27 +89,31 @@ public class ListFragment extends Fragment implements AsyncResponse {
             @Override
             public void onRefresh() {
                 PAGE_NUM = 0;
+                CURRENT_CNT = 0;
                 NetworkCall(ANTECEDENTS_LIST);
                 mSwipeRefresh.setRefreshing(false);
             }
         });
 
+        mListView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
 
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int lastVisibleItemPosition = ((LinearLayoutManager)mListView.getLayoutManager()).findLastVisibleItemPosition();
+                int itemTotalCnt = mListView.getAdapter().getItemCount();
 
-//        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(AbsListView absListView, int i) {
-//                if (i == AbsListView.OnScrollListener.SCROLL_STATE_IDLE && mLastItemVisibleFlag && mLockListView == false) {
-//                    PAGE_NUM++;
-//                    NetworkCall(ANTECEDENTS_LIST);
-//                }
-//            }
-//
-//            @Override
-//            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-//                mLastItemVisibleFlag = (totalItemCount > 0) && (firstVisibleItem + visibleItemCount >= totalItemCount);
-//            }
-//        });
+                if (lastVisibleItemPosition == (itemTotalCnt - 1) && (CURRENT_CNT < LIST_TOTAL_CNT) && mLockListView) {
+                    mLockListView = false;
+                    PAGE_NUM++;
+                    NetworkCall(ANTECEDENTS_LIST);
+                }
+            }
+        });
 
         NetworkCall(ANTECEDENTS_LIST);
 
@@ -129,6 +137,9 @@ public class ListFragment extends Fragment implements AsyncResponse {
                     mAdapter = new Test2Adapter(getActivity(),this);
                 }
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);
+
+                LIST_TOTAL_CNT = JsonIntIsNullCheck(jsonObject,"total");
+                CURRENT_CNT += jsonArray.length();
                 if (mCode.equals(ANTECEDENTS_LIST)){
                     JSONArray jsonArrayVisit = null;
                     for (int i = 0; i < jsonArray.length(); i++){

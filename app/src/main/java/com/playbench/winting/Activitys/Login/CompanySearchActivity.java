@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -86,22 +88,36 @@ public class CompanySearchActivity extends AppCompatActivity implements View.OnC
             }
         });
 
-        mEditSearch.addTextChangedListener(new TextWatcher() {
+//        mEditSearch.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                PAGE_NUM = 0;
+//                mSearchText = charSequence.toString();
+//                NetworkCall(COMPANY_SEARCH);
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
+
+        mEditSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                PAGE_NUM = 0;
-                mSearchText = charSequence.toString();
-                NetworkCall(COMPANY_SEARCH);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
+                if(actionId == EditorInfo.IME_ACTION_SEARCH){
+                    PAGE_NUM = 0;
+                    mSearchText = mEditSearch.getText().toString();
+                    NetworkCall(COMPANY_SEARCH);
+                }
+                return false;
             }
         });
     }

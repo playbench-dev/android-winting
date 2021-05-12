@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.playbench.winting.Adapters.EstimateViewPagerAdpater;
 import com.playbench.winting.R;
+import com.playbench.winting.Utils.MwSharedPreferences;
 import com.playbench.winting.Utils.NetworkUtils;
 import com.playbench.winting.Utils.OneButtonDialog;
 import com.playbench.winting.Utils.ServerManagement.AsyncResponse;
@@ -59,7 +60,7 @@ public class EstimateDetailActivity extends AppCompatActivity implements View.On
     private Button                  mButtonMove;
     private EstimateViewPagerAdpater mAdapter;
     private ProgressDialog          mProgressDialog;
-
+    private MwSharedPreferences     mPref;
     //info
     private String                  mOrdeNo = "";
     private String                  mOrdeCode = "";
@@ -80,6 +81,7 @@ public class EstimateDetailActivity extends AppCompatActivity implements View.On
 
         mAdapter                    = new EstimateViewPagerAdpater(this,2);
         mProgressDialog             = new ProgressDialog(this,R.style.MyTheme);
+        mPref                       = new MwSharedPreferences(this);
         mProgressDialog.setCancelable(false);
 
         NetworkCall(ORDER_DETAIL);
@@ -154,7 +156,7 @@ public class EstimateDetailActivity extends AppCompatActivity implements View.On
     void NetworkCall(String mCode){
         mProgressDialog.show();
         if (mCode.equals(ORDER_DETAIL)){
-            new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(getIntent().getStringExtra("orderNo"));
+            new NetworkUtils.NetworkCall(this,this,TAG,mCode).execute(mPref.getStringValue(USER_NO),getIntent().getStringExtra("orderNo"));
         }
     }
 
@@ -232,6 +234,11 @@ public class EstimateDetailActivity extends AppCompatActivity implements View.On
                     mTextForm.setText(FormType(JsonIsNullCheck(object,"form")));
                     mTextDueDate.setText(DueDate(JsonIsNullCheck(object,"due_date")));
                     mTextDescription.setText(JsonIsNullCheck(object,"description"));
+
+                    if (JsonIsNullCheck(object,"add_yn").equals("y")){
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        new OneButtonDialog(getString(R.string.Estimate_Detail_Title),"이미 신청한 견적서입니다.",null).show(fragmentManager,TAG);
+                    }
                 }
             }else{
                 FragmentManager fragmentManager = getSupportFragmentManager();

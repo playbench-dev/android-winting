@@ -6,8 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.playbench.winting.Adapters.NewRequestAdapter;
 import com.playbench.winting.Adapters.TestAdapter;
 import com.playbench.winting.Itmes.NewRequestItem;
 import com.playbench.winting.R;
@@ -29,14 +26,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.playbench.winting.Utils.NetworkUtils.COMPANY_SEARCH;
 import static com.playbench.winting.Utils.NetworkUtils.ERROR_CD;
 import static com.playbench.winting.Utils.NetworkUtils.ERROR_NM;
-import static com.playbench.winting.Utils.NetworkUtils.LOGOUT;
 import static com.playbench.winting.Utils.NetworkUtils.ORDER_LIST;
 import static com.playbench.winting.Utils.NetworkUtils.REQUEST_SUCCESS;
 import static com.playbench.winting.Utils.NetworkUtils.RESOURCES;
-import static com.playbench.winting.Utils.NetworkUtils.WITHDRAWAL;
 import static com.playbench.winting.Utils.Util.JsonIsNullCheck;
 import static com.playbench.winting.Utils.Util.REGION;
 import static com.playbench.winting.Utils.Util.USER_NO;
@@ -50,6 +44,8 @@ public class NewRequestFragment extends Fragment implements AsyncResponse {
     private int                     PAGE_NUM = 0;
     private int                     PAGE_SHOW_CNT = 15;
     private boolean                 mLastItemVisibleFlag = false;
+    private int                     LIST_TOTAL_CNT = 0;
+    private int                     CURRENT_CNT = 0;
     private boolean                 mLockListView = false;
     private MwSharedPreferences     mPref;
     private ProgressDialog          mProgressDialog;
@@ -84,38 +80,31 @@ public class NewRequestFragment extends Fragment implements AsyncResponse {
             @Override
             public void onRefresh() {
                 PAGE_NUM = 0;
+                CURRENT_CNT = 0;
                 NetworkCall(ORDER_LIST);
                 mSwipeRefresh.setRefreshing(false);
             }
         });
 
-        mListView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+        mListView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollChange(View view, int i, int i1, int i2, int i3) {
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
                 int lastVisibleItemPosition = ((LinearLayoutManager)mListView.getLayoutManager()).findLastVisibleItemPosition();
                 int itemTotalCnt = mListView.getAdapter().getItemCount();
 
-                if (lastVisibleItemPosition == (itemTotalCnt - 1) && mLockListView) {
+                if (lastVisibleItemPosition == (itemTotalCnt - 1) && (CURRENT_CNT < LIST_TOTAL_CNT) && mLockListView) {
+                    mLockListView = false;
                     PAGE_NUM++;
                     NetworkCall(ORDER_LIST);
                 }
             }
         });
-
-//        mListView.setOnScrollListener(new AbsListView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(AbsListView absListView, int i) {
-//                if (i == AbsListView.OnScrollListener.SCROLL_STATE_IDLE && mLastItemVisibleFlag && mLockListView == false) {
-//                    PAGE_NUM++;
-//                    NetworkCall(ORDER_LIST);
-//                }
-//            }
-//
-//            @Override
-//            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-//                mLastItemVisibleFlag = (totalItemCount > 0) && (firstVisibleItem + visibleItemCount >= totalItemCount);
-//            }
-//        });
 
         return v;
     }
@@ -138,9 +127,13 @@ public class NewRequestFragment extends Fragment implements AsyncResponse {
                 }
                 JSONArray jsonArray = jsonObject.getJSONArray(RESOURCES);
                 if (mCode.equals(ORDER_LIST)){
+                    LIST_TOTAL_CNT = jsonObject.getInt("total");
+                    CURRENT_CNT += jsonArray.length();
+                    Log.i(TAG,"total : " + LIST_TOTAL_CNT + " current : " + CURRENT_CNT);
                     JSONArray jsonArrayVisit = null;
                     for (int i = 0; i < jsonArray.length(); i++){
                         JSONObject object = jsonArray.getJSONObject(i);
+                        Log.i(TAG,"region : " + JsonIsNullCheck(object,"address"));
                         NewRequestItem newRequestItem = new NewRequestItem();
                         newRequestItem.setmOrderNo(JsonIsNullCheck(object,"order_no"));
                         newRequestItem.setmOrderCode(JsonIsNullCheck(object,"order_code"));
